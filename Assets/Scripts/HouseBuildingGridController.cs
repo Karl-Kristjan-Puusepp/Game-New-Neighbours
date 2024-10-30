@@ -14,7 +14,7 @@ public class HouseBuildingGridController : MonoBehaviour
     private void Awake()
     {
         InitializeGrid();
-        gameObject.SetActive(false);
+        gameObject.SetActive(true);
     }
 
     private void InitializeGrid()
@@ -127,9 +127,5 @@ public class HouseBuildingGridController : MonoBehaviour
             }
         }
         //Debug.Log($"Saved house state to lot: {lot.gameObject.name}");
-    }
-    public void StartBuild()
-    {
-        gameObject.SetActive( true );
     }
 }

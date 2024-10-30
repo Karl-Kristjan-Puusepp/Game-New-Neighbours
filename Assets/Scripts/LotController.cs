@@ -39,7 +39,7 @@ public class LotController : MonoBehaviour
 
         if (firstHouse)
         {
-            //lotButton.interactable = true;
+            lotButton.interactable = true;
             DoneButton.onClick.AddListener(OnDoneClicked);
         }
     
@@ -51,6 +51,7 @@ public class LotController : MonoBehaviour
         if (houseBuildingGrid == null)
         {
             houseBuildingGrid = FindObjectOfType<HouseBuildingGridController>();
+            //Debug.Log("housebuilding grid ", houseBuildingGrid);
         }
 
         if (miniGridController == null)
@@ -96,13 +97,12 @@ public class LotController : MonoBehaviour
 
     public void OnLotClicked()
     {
-       
-        houseBuildingGrid.StartBuild();
+        
+
+        houseBuildingGrid.gameObject.SetActive(true);
         // If we're clicking on a different lot than the current one
         if (currentSelectedLot != this)
         {
-            
-
             // Save the current grid state to the previous lot if there was one
             if (currentSelectedLot != null)
             {
