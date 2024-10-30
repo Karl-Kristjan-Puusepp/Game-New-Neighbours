@@ -8,6 +8,7 @@ public class HouseBlockController : MonoBehaviour, IBeginDragHandler, IDragHandl
     private Canvas canvas;
     private RectTransform rectTransform;
     private Vector2 originalPosition;
+    public bool isDoor;
     private CanvasGroup canvasGroup;
     [HideInInspector]
     public bool wasDropped = false;  // New flag to track successful drops

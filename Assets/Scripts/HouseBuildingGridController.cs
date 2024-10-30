@@ -2,14 +2,19 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using UnityEngine.U2D;
+using UnityEngine.Tilemaps;
 
 public class HouseBuildingGridController : MonoBehaviour
 {
     private SquareController[,] gridSquares = new SquareController[3, 4];
+    public int doorInt=0;
     
     private void Awake()
     {
         InitializeGrid();
+        gameObject.SetActive(false);
     }
 
     private void InitializeGrid()
@@ -42,8 +47,9 @@ public class HouseBuildingGridController : MonoBehaviour
         LotController currentLot = FindCurrentLot();
         if (currentLot != null)
         {
-            SaveCurrentStateToLot(currentLot);
+            //SaveCurrentStateToLot(currentLot);
         }
+
     }
 
     private LotController FindCurrentLot()
@@ -62,11 +68,11 @@ public class HouseBuildingGridController : MonoBehaviour
     {
         // Disable the button of the selected lot to mark it as active
         lot.GetComponent<Button>().interactable = false;
-
+        
         // Enable all other lot buttons
         foreach (LotController otherLot in FindObjectsOfType<LotController>())
         {
-            if (otherLot != lot)
+            if (otherLot != lot )
             {
                 otherLot.GetComponent<Button>().interactable = true;
             }
@@ -78,8 +84,11 @@ public class HouseBuildingGridController : MonoBehaviour
             for (int col = 0; col < 4; col++)
             {
                 TileData tileData = lot.houseData.tiles[row, col];
+               
                 gridSquares[row, col].SetTile(tileData.sprite, tileData.color);
-                /*
+
+                Debug.Log($"Loading house state from lot: {lot.gameObject.name} tile at ({row}, {col}): sprite={tileData.sprite}");
+
                 // Update the filled state
                 if (tileData.isFilled)
                 {
@@ -89,7 +98,7 @@ public class HouseBuildingGridController : MonoBehaviour
                 {
                     gridSquares[row, col].gameObject.tag = "Untagged";
                 }
-                */
+                
             }
         }
     }
@@ -101,15 +110,26 @@ public class HouseBuildingGridController : MonoBehaviour
             for (int col = 0; col < 4; col++)
             {
                 SquareController square = gridSquares[row, col];
-                var (sprite, color) = square.GetCurrentTile();
-                
+                var (sprite, color, door) = square.GetCurrentTile();
+
+                if (door && lot.firstHouse)
+                {
+                    Debug.Log($"lot: {lot.gameObject.name} tile at ({row}, {col}): sprite={lot.houseData.tiles[row, col].sprite}");
+                    doorInt += 1;
+                    Debug.Log($"{doorInt}");
+                }
                 lot.houseData.tiles[row, col] = new TileData(
                     sprite,
                     color,
                     square.IsFilled()
                 );
+                //Debug.Log($"Saving house state from lot: {lot.gameObject.name} tile at ({row}, {col}): sprite={lot.houseData.tiles[row, col].sprite}");
             }
         }
-        Debug.Log($"Saved house state to lot: {lot.gameObject.name}");
+        //Debug.Log($"Saved house state to lot: {lot.gameObject.name}");
+    }
+    public void StartBuild()
+    {
+        gameObject.SetActive( true );
     }
 }

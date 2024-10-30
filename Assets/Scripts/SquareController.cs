@@ -8,13 +8,14 @@ public class SquareController : MonoBehaviour, IDropHandler, IPointerClickHandle
     private Image squareImage;
     private Button squareButton;
     private const string FILLED_TAG = "FilledTile";  // Define the tag as a constant
-    
+    private bool IsDoor;
+
     [SerializeField]
     private GameObject buildingTilePrefab;
     
     private Sprite defaultSprite;
     private Color defaultColor;
-    
+    //public int doorInt;
     private void Awake()
     {
         squareImage = GetComponent<Image>();
@@ -45,6 +46,7 @@ public class SquareController : MonoBehaviour, IDropHandler, IPointerClickHandle
         Debug.Log($"Dropped object: {(droppedObject ? droppedObject.name : "null")}");
 
         HouseBlockController originalController = droppedObject.GetComponent<HouseBlockController>();
+        
         if (originalController != null)
         {
             droppedObject = originalController.GetDraggedCopy();
@@ -52,6 +54,14 @@ public class SquareController : MonoBehaviour, IDropHandler, IPointerClickHandle
 
         if (droppedObject != null)
         {
+            if (originalController.isDoor)
+            {
+                IsDoor = true;
+            }
+            else
+            {
+                IsDoor = false;
+            }
             Image draggedImage = droppedObject.GetComponent<Image>();
             Debug.Log($"Dragged image component: {draggedImage != null}");
             
@@ -184,8 +194,9 @@ public class SquareController : MonoBehaviour, IDropHandler, IPointerClickHandle
         return gameObject.CompareTag(FILLED_TAG);
     }
 
-    public (Sprite sprite, Color color) GetCurrentTile()
+    public (Sprite sprite, Color color, Boolean door) GetCurrentTile()
     {
-        return (squareImage.sprite, squareImage.color);
+        
+        return (squareImage.sprite, squareImage.color, IsDoor);
     }
 }
