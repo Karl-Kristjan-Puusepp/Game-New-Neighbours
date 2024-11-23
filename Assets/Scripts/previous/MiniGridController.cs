@@ -56,7 +56,7 @@ public class MiniGridController : MonoBehaviour
             {
                 for (int col = 0; col < 4; col++)
                 {
-                    TileData tileData = lot.houseData.tiles[row, col];
+                    /*TileData tileData = lot.houseData.tiles[row, col];
 
                     if (tileData.sprite.name != "BuildingTileEmpty")
                     {
@@ -69,7 +69,7 @@ public class MiniGridController : MonoBehaviour
 
                     //Debug.Log($"Loading house state from lot: {lot.gameObject.name} tile at ({row}, {col}): sprite={tileData.sprite}");
 
-
+                    */
                 }
             }
         
