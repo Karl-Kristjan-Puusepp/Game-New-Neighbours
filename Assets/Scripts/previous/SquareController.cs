@@ -108,22 +108,22 @@ public class SquareController : MonoBehaviour, IDropHandler, IPointerClickHandle
         ResetToDefaultTile();
     }
 
-    public void SetTile(Sprite sprite, Color color)
+    public void SetTile(HouseTile tile)
     {
         if (squareImage != null)
         {
-            squareImage.sprite = sprite;
-            squareImage.color = color;
+            squareImage.sprite = tile.sprite;
+            squareImage.color = tile.color;
             
             if (squareButton != null)
             {
                 ColorBlock colors = squareButton.colors;
-                colors.normalColor = color;
+                colors.normalColor = tile.color;
                 squareButton.colors = colors;
             }
 
             // If the sprite is different from the default, mark as filled
-            if (sprite != defaultSprite)
+            if (tile.sprite != defaultSprite)
             {
                 gameObject.tag = FILLED_TAG;
             }
@@ -194,9 +194,8 @@ public class SquareController : MonoBehaviour, IDropHandler, IPointerClickHandle
         return gameObject.CompareTag(FILLED_TAG);
     }
 
-    public (Sprite sprite, Color color, Boolean door) GetCurrentTile()
-    {
-        
-        return (squareImage.sprite, squareImage.color, IsDoor);
+    public HouseTile GetCurrentTile()
+    {      
+        return new HouseTile(squareImage.sprite, squareImage.color);
     }
 }
