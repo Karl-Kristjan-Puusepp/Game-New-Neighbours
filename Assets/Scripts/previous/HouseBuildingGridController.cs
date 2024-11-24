@@ -14,6 +14,7 @@ public class HouseBuildingGridController : MonoBehaviour
     private SquareController[,] gridSquares = new SquareController[4, 3];
     public int doorInt = 0;
     public int windowInt = 0;
+    public Image HappyImage;
     //private bool ready = false; 
     public TextMeshProUGUI HappyText;
 
@@ -132,6 +133,7 @@ public class HouseBuildingGridController : MonoBehaviour
         {
             HappyText.text = $"{customerData.CustomerName} is not very happy...";
         }
+        HappyImage.sprite = SceneData.CurrentCustomerStatic.CustomerSprite;
         SceneData.customersTotal += 1;
 
 
