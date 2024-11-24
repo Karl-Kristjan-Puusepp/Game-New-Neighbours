@@ -17,8 +17,15 @@ public class CustomerPanel : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();  
+        
+    }
+    public void SetCustomerData(CustomerData customerData)
+    {
+        
         if (customerData != null)
         {
+            Debug.Log(customerData);
+            this.customerData = customerData;
             if (panelImage != null)
                 panelImage.sprite = customerData.CustomerSprite;
 
@@ -28,11 +35,19 @@ public class CustomerPanel : MonoBehaviour
 
             if (customerData.CustomerNoise != null)
             {
-                audioSource.clip = customerData.CustomerNoise; 
-                audioSource.playOnAwake = false; 
+                if(audioSource == null)
+                {
+                    Debug.Log("Audio source is null !?!?!");
+                    audioSource = GetComponent<AudioSource>();
+                }
+                audioSource.clip = customerData.CustomerNoise;
+                audioSource.playOnAwake = false;
+                audioSource.Play();
+                
+                
             }
 
-            audioSource.Play();
+            ;
         }
     }
 }
