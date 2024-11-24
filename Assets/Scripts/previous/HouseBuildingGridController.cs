@@ -71,17 +71,18 @@ public class HouseBuildingGridController : MonoBehaviour
                     Debug.Log($"Tile null at row:{row} and col:{col}");
                     continue;
                 }
-                Debug.Log(gridSquares[row, col].squareImage.name);
-
-                Debug.Log(gridSquares[row, col].buildingTilePrefab.GetComponent<HouseBlockController>().isDoor);
-                Debug.Log(gridSquares[row, col].buildingTilePrefab.GetComponent<HouseBlockController>().windows);
-
-
-                if (gridSquares[row, col].squareImage.name == "doorWall") 
+                if (gridSquares[row, col].squareImage.sprite.name == "door") 
                 {
                     doorInt += 1;
                 }
-                windowInt += gridSquares[row, col].buildingTilePrefab.GetComponent<HouseBlockController>().windows;
+                if (gridSquares[row, col].squareImage.sprite.name == "onewindow" || gridSquares[row, col].squareImage.sprite.name == "roundwindow")
+                {
+                    windowInt += 1;
+                }
+                if (gridSquares[row, col].squareImage.sprite.name == "twowindow" )
+                {
+                    windowInt += 2;
+                }
                 currHouse.tiles[row, col] = currTile;                       
             }
         }

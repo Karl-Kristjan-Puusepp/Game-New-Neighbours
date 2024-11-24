@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class Game : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class Game : MonoBehaviour
     public GameObject AllLots;
     public GameObject CustomerPanelObject;
     private CustomerPanel customerPanel;
+    public TextMeshProUGUI HappinessText;
 
     private CustomerData currentCustomer;
     private static int currentCustomerID = 0;
@@ -26,6 +28,7 @@ public class Game : MonoBehaviour
             Debug.LogError("CustomerPanel script is missing on the assigned CustomerPanelObject.");
         }
 
+        HappinessText.text = $"{SceneData.happyCustomers} / {SceneData.customersTotal}";
 
         foreach (Transform child in AllLots.transform)
         {
