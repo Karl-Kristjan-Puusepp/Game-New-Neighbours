@@ -12,6 +12,10 @@
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
 
+# Ignore build_info
+Assets/StreamingAssets/build_info
+
+
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
 /[Mm]emoryCaptures/

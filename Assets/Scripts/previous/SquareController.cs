@@ -5,13 +5,13 @@ using System;
 public class SquareController : MonoBehaviour, IDropHandler, IPointerClickHandler
 {
     public event Action OnTileChanged;
-    private Image squareImage;
+    public Image squareImage;
     private Button squareButton;
     private const string FILLED_TAG = "FilledTile";  // Define the tag as a constant
     private bool IsDoor;
 
     [SerializeField]
-    private GameObject buildingTilePrefab;
+    public GameObject buildingTilePrefab;
     
     private Sprite defaultSprite;
     private Color defaultColor;

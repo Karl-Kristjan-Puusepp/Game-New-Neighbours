@@ -6,13 +6,17 @@ using System.Drawing;
 using UnityEngine.U2D;
 using UnityEngine.Tilemaps;
 using System.Threading.Tasks;
+using static Reporter;
+using TMPro;
 
 public class HouseBuildingGridController : MonoBehaviour
 {
     private SquareController[,] gridSquares = new SquareController[4, 3];
-    public int doorInt=0;
-    private bool ready = false; 
-    
+    public int doorInt = 0;
+    public int windowInt = 0;
+    //private bool ready = false; 
+    public TextMeshProUGUI HappyText;
+
     private void Awake()
     {
         InitializeGrid();
@@ -66,12 +70,71 @@ public class HouseBuildingGridController : MonoBehaviour
                 if(currTile == null){
                     Debug.Log($"Tile null at row:{row} and col:{col}");
                     continue;
-                } 
+                }
+                if (gridSquares[row, col].squareImage.sprite.name == "door") 
+                {
+                    doorInt += 1;
+                }
+                if (gridSquares[row, col].squareImage.sprite.name == "onewindow" || gridSquares[row, col].squareImage.sprite.name == "roundwindow")
+                {
+                    windowInt += 1;
+                }
+                if (gridSquares[row, col].squareImage.sprite.name == "twowindow" )
+                {
+                    windowInt += 2;
+                }
                 currHouse.tiles[row, col] = currTile;                       
             }
         }
-        
-        ActiveHouse.SetHouse(currHouse);   
+        Debug.Log("AMOUNT OF DOORS CALCULATED: "+doorInt);
+        Debug.Log("AMOUNT OF WINDOWS CALCULATED: " + windowInt);
+
+        ActiveHouse.SetHouse(currHouse);
+        CheckRequirements(doorInt, windowInt);
+    }
+
+    private void CheckRequirements(int doorInt, int windowInt)
+    {
+        CustomerData customerData = SceneData.CurrentCustomerStatic;
+        bool requirementsFulfilled = false;
+        Debug.Log("Doors required: "+ customerData.doorsRequired+ ", doors on house: "+ doorInt);
+        Debug.Log("Windows required: "+ customerData.windowsRequired+ ", windows on house: "+ windowInt);
+        if (customerData.doorsRequired!= -1)
+        {
+            Debug.Log("Doors required: "+ customerData.doorsRequired);
+            if (customerData.doorsRequired == doorInt)
+            {
+                requirementsFulfilled = true;
+            }
+            else
+            {
+                requirementsFulfilled = false;
+            }
+        }
+        if (customerData.windowsRequired != -1)
+        {
+            Debug.Log("Windows required: "+ customerData.windowsRequired);
+            if (customerData.windowsRequired == windowInt)
+            {
+                requirementsFulfilled = true;
+            }
+            else
+            {
+                requirementsFulfilled = false;
+            }
+        }
+        if (requirementsFulfilled)
+        {
+            HappyText.text = $"{customerData.CustomerName} is happy !!";
+            SceneData.happyCustomers += 1;
+        }
+        else
+        {
+            HappyText.text = $"{customerData.CustomerName} is not very happy...";
+        }
+        SceneData.customersTotal += 1;
+
+
     }
 
     public async void LoadActiveHouse() {

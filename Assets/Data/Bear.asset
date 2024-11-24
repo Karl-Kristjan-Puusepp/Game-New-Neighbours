@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 902e98d70f0175141ae82fb01687d669, type: 3}
   m_Name: Bear
   m_EditorClassIdentifier: 
-  requirementText: I don't want to live next to a frog.... and i want a green house
-  windowsRequired: 0
-  doorsRequired: 0
+  requirementText: I would like 6 windows and 1 door :)
+  windowsRequired: 6
+  doorsRequired: 1
   CustomerSprite: {fileID: 21300000, guid: f6001aec6dca9cd4fb82d95d1fa433de, type: 3}
   CustomerNoise: {fileID: 0}
+  CustomerName: Bear

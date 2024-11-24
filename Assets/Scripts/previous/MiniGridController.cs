@@ -44,11 +44,6 @@ public class MiniGridController : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        
-    }
-
 
     public void DisplayHouse(House house)
     {

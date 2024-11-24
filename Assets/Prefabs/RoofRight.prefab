@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5687460559305075956}
   - component: {fileID: 2108307488048097273}
   - component: {fileID: 6337275033024285654}
+  - component: {fileID: 5006910162432475119}
   m_Layer: 5
   m_Name: RoofRight
   m_TagString: Untagged
@@ -60,6 +61,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc48ab86e3606b64ca07529b3bd1b414, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDoor: 0
+  windows: 0
   wasDropped: 0
 --- !u!114 &5687460559305075956
 MonoBehaviour:
@@ -74,7 +77,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.94509804, g: 0.94509804, b: 0.94509804, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -147,3 +150,18 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &5006910162432475119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6756388292233667878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc48ab86e3606b64ca07529b3bd1b414, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDoor: 0
+  windows: 0
+  wasDropped: 0

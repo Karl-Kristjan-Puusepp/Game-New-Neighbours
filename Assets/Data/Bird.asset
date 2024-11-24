@@ -17,3 +17,4 @@ MonoBehaviour:
   doorsRequired: 0
   CustomerSprite: {fileID: 21300000, guid: ec2c4bc73d447144e91cfe5a8429bb45, type: 3}
   CustomerNoise: {fileID: 0}
+  CustomerName: Bird
