@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Bunny
   m_EditorClassIdentifier: 
   requirementText: I want 3 doors !! Hop-hop !
-  windowsRequired: 0
+  windowsRequired: -1
   doorsRequired: 3
   CustomerSprite: {fileID: 21300000, guid: e59b9b4b7977b8d499664c77bbc4a569, type: 3}
   CustomerNoise: {fileID: 8300000, guid: 6f80a321dab2a5e49ad92ce9264034b6, type: 3}
+  CustomerName: Bunny

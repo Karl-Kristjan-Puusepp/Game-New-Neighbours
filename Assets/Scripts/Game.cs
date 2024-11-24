@@ -19,6 +19,7 @@ public class Game : MonoBehaviour
 
     private void Awake()
     {
+        newCustomer.interactable = true;
         customerPanel = CustomerPanelObject.GetComponent<CustomerPanel>();
         if (customerPanel == null)
         {
@@ -45,6 +46,8 @@ public class Game : MonoBehaviour
             currentCustomerID++;
             CustomerPanelObject.SetActive(true);
             customerPanel.SetCustomerData(currentCustomer);
+
+            SceneData.CurrentCustomerStatic = currentCustomer;
 
             int count = 0;
             foreach (Transform child in AllLots.transform)

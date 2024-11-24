@@ -14,8 +14,21 @@ public class CustomerPanel : MonoBehaviour
 
     private AudioSource audioSource;
 
+    void Awake()
+    {
+        if (SceneData.CurrentCustomerStatic != null)
+        {
+            customerData = SceneData.CurrentCustomerStatic;
+            SetCustomerData(customerData);
+        }
+    }
     void Start()
     {
+        if (SceneData.CurrentCustomerStatic != null)
+        {
+            customerData = SceneData.CurrentCustomerStatic;
+            SetCustomerData(customerData);
+        }
         audioSource = GetComponent<AudioSource>();  
         
     }

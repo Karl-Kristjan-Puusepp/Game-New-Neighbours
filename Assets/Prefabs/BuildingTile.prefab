@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7213103222485676182}
   - component: {fileID: 3349081727014421229}
+  - component: {fileID: 4513525382881644815}
   m_Layer: 0
   m_Name: BuildingTile
   m_TagString: Untagged
@@ -84,3 +85,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4513525382881644815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4464028811110726583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc48ab86e3606b64ca07529b3bd1b414, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDoor: 0
+  windows: 0
+  wasDropped: 0
