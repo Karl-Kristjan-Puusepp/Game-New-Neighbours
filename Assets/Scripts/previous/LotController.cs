@@ -21,6 +21,7 @@ public class LotController : MonoBehaviour
 
     private void Awake()
     {
+        
         lotHouse = LotHouseAssigner.GetHouse(row, col);
 
         gridTransform = transform.Find("minigrid"); 
@@ -40,12 +41,17 @@ public class LotController : MonoBehaviour
     }
     private void Start()
     {   
+        SetButtonTransparency(0.7f);
         lotHouse = LotHouseAssigner.GetHouse(row, col);
 
         if(lotHouse == null)
             lotHouse = new House();
 
         gridController.DisplayHouse(lotHouse);
+
+        if (LotHouseAssigner.GetHouse(row, col) != null) {
+            SetButtonTransparency(0);
+        }
     }
 
 
@@ -58,5 +64,22 @@ public class LotController : MonoBehaviour
 
     public void SetHouse(House house) {
         this.lotHouse = house;
+    }
+    public void SetButtonTransparency(float f)
+    {
+        // Get the Image component attached to the button
+        Image buttonImage = GetComponent<Image>();
+
+        if (buttonImage != null)
+        {
+            // Set the alpha to 0 (fully transparent)
+            Color color = buttonImage.color;
+            color.a = f; // Alpha = 0 means fully transparent
+            buttonImage.color = color;
+        }
+        else
+        {
+            Debug.LogError("No Image component found on this Button.");
+        }
     }
 }
