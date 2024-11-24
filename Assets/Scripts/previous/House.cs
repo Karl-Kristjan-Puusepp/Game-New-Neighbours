@@ -43,7 +43,7 @@ public class House
             if (tile == null) 
                 str += "NullTile\n";
             else 
-                str += tile.ToString() + "\n";
+                str += tile.sprite.name + "\n";
         }
         return str;
     }

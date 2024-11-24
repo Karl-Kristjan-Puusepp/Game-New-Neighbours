@@ -5,17 +5,26 @@ using System.Collections.Generic;
 using System.Drawing;
 using UnityEngine.U2D;
 using UnityEngine.Tilemaps;
+using System.Threading.Tasks;
 
 public class HouseBuildingGridController : MonoBehaviour
 {
     private SquareController[,] gridSquares = new SquareController[4, 3];
     public int doorInt=0;
+    private bool ready = false; 
     
     private void Awake()
     {
         InitializeGrid();
         gameObject.SetActive(true);
     }
+
+    private void OnEnable()
+    {
+        InitializeGrid(); // Ensure the grid is set up
+        LoadActiveHouse(); // Then load the active house
+    }
+
 
     private void InitializeGrid()
     {
@@ -40,9 +49,11 @@ public class HouseBuildingGridController : MonoBehaviour
             int capturedCol = col;
             //squares[i].OnTileChanged += () => OnSquareChanged(capturedRow, capturedCol);
         }
-        
-        LoadActiveHouse();
-
+        RectTransform rectTransform = GetComponent<RectTransform>();
+        if (rectTransform != null)
+        {
+            LayoutRebuilder.ForceRebuildLayoutImmediate(rectTransform);
+        }
     }
 
     public void SaveAsActiveHouse() {
@@ -59,14 +70,20 @@ public class HouseBuildingGridController : MonoBehaviour
                 currHouse.tiles[row, col] = currTile;                       
             }
         }
+        
         ActiveHouse.SetHouse(currHouse);   
     }
 
-    public void LoadActiveHouse() {
+    public async void LoadActiveHouse() {
+        InitializeGrid();
+        await Task.Delay(300);
         if (ActiveHouse.CurrentHouse == null){
             Debug.Log("Loading active house failed, active house set to null");
             return;
         } 
+        
+        Debug.Log($"Loading house {ActiveHouse.CurrentHouse.ToString()}");
+
 
         for (int row = 0; row < 4; row++) 
         {
@@ -76,6 +93,11 @@ public class HouseBuildingGridController : MonoBehaviour
                 //if (houseTile == null) continue;
                 gridSquares[row, col].SetTile(houseTile);
             }
+        }
+        RectTransform rectTransform = GetComponent<RectTransform>();
+        if (rectTransform != null)
+        {
+            LayoutRebuilder.ForceRebuildLayoutImmediate(rectTransform);
         }
     }
 

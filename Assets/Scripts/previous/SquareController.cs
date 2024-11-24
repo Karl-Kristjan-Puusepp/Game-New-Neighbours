@@ -109,32 +109,33 @@ public class SquareController : MonoBehaviour, IDropHandler, IPointerClickHandle
     }
 
     public void SetTile(HouseTile tile)
+{
+    if (tile == null)
     {
-        if (squareImage != null)
-        {
-            squareImage.sprite = tile.sprite;
-            squareImage.color = tile.color;
-            
-            if (squareButton != null)
-            {
-                ColorBlock colors = squareButton.colors;
-                colors.normalColor = tile.color;
-                squareButton.colors = colors;
-            }
-
-            // If the sprite is different from the default, mark as filled
-            if (tile.sprite != defaultSprite)
-            {
-                gameObject.tag = FILLED_TAG;
-            }
-            else
-            {
-                gameObject.tag = "Untagged";
-            }
-            
-            OnTileChanged?.Invoke();
-        }
+        Debug.LogWarning("SetTile received a null tile. Resetting to default.");
+        ResetToDefaultTile();
+        return;
     }
+
+    if (squareImage != null)
+    {
+        if(tile.sprite == null) Debug.Log("Tile sprite was null");
+        if(tile.color == null) Debug.Log("Tile color was null");
+        squareImage.sprite = tile.sprite ?? defaultSprite; // Use default if sprite is null
+        squareImage.color = tile.color != default ? tile.color : defaultColor; // Use default if color is null
+
+        if (squareButton != null)
+        {
+            ColorBlock colors = squareButton.colors;
+            colors.normalColor = squareImage.color;
+            squareButton.colors = colors;
+        }
+
+        gameObject.tag = (tile.sprite != defaultSprite) ? FILLED_TAG : "Untagged";
+        OnTileChanged?.Invoke();
+    }
+}
+
 
     private void ResetToDefaultTile()
     {
@@ -162,7 +163,7 @@ public class SquareController : MonoBehaviour, IDropHandler, IPointerClickHandle
                 Debug.Log("Square reset to default BuildingTile");
                 
                 // Trigger the change event
-                OnTileChanged?.Invoke();
+                //OnTileChanged?.Invoke();
             }
         }
         else
@@ -184,7 +185,7 @@ public class SquareController : MonoBehaviour, IDropHandler, IPointerClickHandle
                 Debug.Log("Square reset to stored default values");
                 
                 // Trigger the change event
-                OnTileChanged?.Invoke();
+                //OnTileChanged?.Invoke();
             }
         }
     }
