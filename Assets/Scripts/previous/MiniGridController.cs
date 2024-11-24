@@ -10,68 +10,78 @@ public class MiniGridController : MonoBehaviour
     [SerializeField] private Sprite defaultSprite; 
     [SerializeField] private Color defaultColor = Color.clear;
 
-    private void Start()
-    {
-        gridCells = new Image[3, 4];
+    private void Awake() {
+        gridCells = new Image[4, 3];
         int index = 0;
 
         foreach (Transform child in transform) 
         {
             
-            int row = index / 4;
-            int col = index % 4;
+            int row = index / 3;
+            int col = index % 3;
             
             Image cellImage = child.GetComponent<Image>();
             if (cellImage != null)
             {
                 gridCells[row, col] = cellImage;
-
+                //Debug.Log($"Initialised r:{row}, c:{col} in minigrid");
                 // Set default sprite and color
                 cellImage.sprite = defaultSprite;
                 cellImage.color = defaultColor;
             }
             index++;
         }
+
+        for (int row = 0; row < 4; row++)
+        {
+            for (int col = 0; col < 3; col++)
+            {
+                if (gridCells[row, col] == null)
+                {
+                    Debug.LogError($"Grid cell at [{row}, {col}] is null. Check your GameObject hierarchy!");
+                }
+            }
+        }
+    }
+
+    private void Start()
+    {
+        
     }
 
 
-    public void LoadHouseFromLot(LotController lot, GameObject minigrid)
+    public void DisplayHouse(House house)
     {
-        
-            // Disable the button of the selected lot to mark it as active
-            lot.GetComponent<Button>().interactable = false;
+        Awake();
+        if (house == null) return;
 
-
-            // Enable all other lot buttons
-            foreach (LotController otherLot in FindObjectsOfType<LotController>())
+        // Load the house data into the grid
+        for (int row = 0; row < 4; row++)
+        {
+            for (int col = 0; col < 3; col++)
             {
-                if (otherLot != lot )
-                {
-                    otherLot.GetComponent<Button>().interactable = true;
-                }
-            }
-
-            // Load the house data into the grid
-            for (int row = 0; row < 3; row++)
-            {
-                for (int col = 0; col < 4; col++)
-                {
-                    /*TileData tileData = lot.houseData.tiles[row, col];
-
-                    if (tileData.sprite.name != "BuildingTileEmpty")
+                HouseTile tile = house.tiles[row, col];
+                if (tile == null) continue;
+                if (tile.sprite == null) continue;
+                if (tile.color == null) continue;
+                if (tile.sprite.name != "BuildingTileEmpty")
+                {       
+                    if (gridCells[row, col] == null)
                     {
-
-                        gridCells[row, col].sprite = tileData.sprite;
-                        gridCells[row, col].color = tileData.color;
-                        gridCells[row, col].SetNativeSize();
-
-                    }
-
-                    //Debug.Log($"Loading house state from lot: {lot.gameObject.name} tile at ({row}, {col}): sprite={tileData.sprite}");
-
-                    */
+                        Debug.LogError($"Grid cell at [{row}, {col}] is null!");
+                        continue;
+                    } 
+                    gridCells[row, col].sprite = tile.sprite;
+                    gridCells[row, col].color = tile.color;
+                    gridCells[row, col].SetNativeSize();
+                    Debug.Log($"Grid cell r:{row}, c:{col} set to {tile.sprite.name}");
                 }
             }
-        
+        }
+        RectTransform rectTransform = GetComponent<RectTransform>();
+        if (rectTransform != null)
+        {
+            LayoutRebuilder.ForceRebuildLayoutImmediate(rectTransform);
+        }
     }
 }
