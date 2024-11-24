@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDoor: 0
-  windows: 2
+  windows: 1
   wasDropped: 0
 --- !u!114 &8505502027742554327
 MonoBehaviour:

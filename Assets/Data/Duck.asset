@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 902e98d70f0175141ae82fb01687d669, type: 3}
   m_Name: Duck
   m_EditorClassIdentifier: 
-  requirementText: '"No windows please, quack quack quack quack"'
+  requirementText: '"I want to live next to the water so I can go fishing :)"'
   windowsRequired: 0
   doorsRequired: 0
   CustomerSprite: {fileID: 21300000, guid: 882e27bb871be1b4b91e6e4f22dcf5cf, type: 3}
