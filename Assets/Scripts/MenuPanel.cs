@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -15,7 +16,6 @@ public class MenuPanel : MonoBehaviour
     public float Duration = 1;
     public Vector3 StartScale;
     public Vector3 TargetScale;
-
 
     private float timeAggregate;
 

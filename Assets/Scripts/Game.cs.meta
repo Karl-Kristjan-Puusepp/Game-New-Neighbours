@@ -3,7 +3,13 @@ guid: d847af8f797d7724b899adcfbc167b37
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - newCustomer: {instanceID: 0}
+  - AllLots: {instanceID: 0}
+  - CustomerPanelObject: {instanceID: 0}
+  - SmallMenuPanel: {fileID: 2690253854160399243, guid: 5adfb4eef29bf3d4b8303291118d0997, type: 3}
+  - GameEndText: {fileID: 747310963653488912, guid: 2b06d5f4b9b2fdd4a9265c6a3f0f4f1c, type: 3}
+  - HappinessText: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
