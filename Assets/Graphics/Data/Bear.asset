@@ -16,4 +16,5 @@ MonoBehaviour:
   windowsRequired: 0
   doorsRequired: 0
   CustomerSprite: {fileID: 21300000, guid: f6001aec6dca9cd4fb82d95d1fa433de, type: 3}
-  CustomerNoise: {fileID: 0}
+  CustomerNoise: {fileID: 8300000, guid: 31499856f9dd717489f5349b88de90fc, type: 3}
+  CustomerName: 
