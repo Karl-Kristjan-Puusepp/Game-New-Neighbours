@@ -4403,6 +4403,17 @@ RectTransform:
   m_AnchoredPosition: {x: -53, y: 0}
   m_SizeDelta: {x: 82.8362, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1486296608 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 747310963653488912, guid: 2b06d5f4b9b2fdd4a9265c6a3f0f4f1c, type: 3}
+  m_PrefabInstance: {fileID: 3266930816667945652}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1542590768
 GameObject:
   m_ObjectHideFlags: 0
@@ -6822,8 +6833,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cf499c24efad73b47ab59ab241f417c3, type: 2}
   AllLots: {fileID: 1028118163}
   CustomerPanelObject: {fileID: 1003134812}
-  SmallMenuPanel: {fileID: 0}
-  GameEndText: {fileID: 0}
+  SmallMenuPanel: {fileID: 2059141472}
+  GameEndText: {fileID: 1486296608}
   HappinessText: {fileID: 1360404777}
 --- !u!1001 &1862322267
 PrefabInstance:
@@ -7593,6 +7604,11 @@ PrefabInstance:
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5623224928547054493, guid: c48971dee48c263499fc563a3306c43d, type: 3}
   m_PrefabInstance: {fileID: 2040430465}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2059141472 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7050959849761129342, guid: 5adfb4eef29bf3d4b8303291118d0997, type: 3}
+  m_PrefabInstance: {fileID: 151640488}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2079706131
 GameObject:
