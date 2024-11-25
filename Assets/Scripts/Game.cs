@@ -19,6 +19,7 @@ public class Game : MonoBehaviour
     public TextMeshProUGUI GameEndText;
     private CustomerPanel customerPanel;
     public TextMeshProUGUI HappinessText;
+    public TextMeshProUGUI ButtonText;
 
     private CustomerData currentCustomer;
     private static int currentCustomerID = 0;
@@ -44,10 +45,19 @@ public class Game : MonoBehaviour
         }
         newCustomer.onClick.AddListener(NextCustomer);
         CustomerPanelObject.SetActive(false);
+        
+    }
+    private void Start()
+    {
+        if (currentCustomerID == Customers.Count)
+        {
+            ButtonText.text = "See results";
+        }
     }
 
     private void NextCustomer()
     {
+        newCustomer.interactable = false;
         if (currentCustomerID < Customers.Count) {
             currentCustomer = Customers[currentCustomerID];
             currentCustomerID++;
@@ -75,6 +85,7 @@ public class Game : MonoBehaviour
         }
         else
         {
+            
             EndGame();
         }
 
