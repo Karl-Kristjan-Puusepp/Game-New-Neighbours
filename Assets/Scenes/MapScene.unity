@@ -2363,6 +2363,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5623224928547054493, guid: c48971dee48c263499fc563a3306c43d, type: 3}
   m_PrefabInstance: {fileID: 691459960}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &712030475 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4581542431477369083, guid: 945efec503acca44fbefbda3b9a37594, type: 3}
+  m_PrefabInstance: {fileID: 1701101902}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &753228031
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6836,6 +6847,7 @@ MonoBehaviour:
   SmallMenuPanel: {fileID: 2059141472}
   GameEndText: {fileID: 1486296608}
   HappinessText: {fileID: 1360404777}
+  ButtonText: {fileID: 712030475}
 --- !u!1001 &1862322267
 PrefabInstance:
   m_ObjectHideFlags: 0
