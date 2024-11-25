@@ -43,8 +43,9 @@ public class HouseBlockController : MonoBehaviour, IBeginDragHandler, IDragHandl
 
         // Get the RectTransform of the copy
         RectTransform draggedRectTransform = draggedCopy.GetComponent<RectTransform>();
-        
+
         // Set the initial position to match the pointer
+
         Vector2 position;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(
             canvas.transform as RectTransform,
