@@ -44,6 +44,8 @@ public class HouseBlockController : MonoBehaviour, IBeginDragHandler, IDragHandl
         // Get the RectTransform of the copy
         RectTransform draggedRectTransform = draggedCopy.GetComponent<RectTransform>();
 
+        DisableVisualComponents(draggedCopy);
+
         // Set the initial position to match the pointer
 
         Vector2 position;
@@ -61,7 +63,15 @@ public class HouseBlockController : MonoBehaviour, IBeginDragHandler, IDragHandl
 
         Debug.Log("Started dragging - Copy created");
     }
+    private void DisableVisualComponents(GameObject target)
+    {
+        var image = target.GetComponent<Image>();
+        if (image != null)
+        {
+            image.enabled = false;
+        }
 
+    }
     public void OnDrag(PointerEventData eventData)
     {
         if (draggedCopy != null)
