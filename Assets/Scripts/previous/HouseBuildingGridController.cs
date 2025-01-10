@@ -11,15 +11,29 @@ using TMPro;
 
 public class HouseBuildingGridController : MonoBehaviour
 {
-    private SquareController[,] gridSquares = new SquareController[4, 3];
+    public SquareController[,] gridSquares = new SquareController[4, 3];
     public int doorInt = 0;
     public int windowInt = 0;
     public Image HappyImage;
     //private bool ready = false; 
     public TextMeshProUGUI HappyText;
+    public static HouseBuildingGridController Instance { get; private set; }
+
+
+    private Dictionary<SquareController, bool> interactableStates = new Dictionary<SquareController, bool>();
 
     private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Debug.LogError("Multiple instances of HouseBuildingGridController found!");
+            Destroy(gameObject);
+        }
+
         InitializeGrid();
         gameObject.SetActive(true);
     }
@@ -48,7 +62,16 @@ public class HouseBuildingGridController : MonoBehaviour
             int row = i / 3;
             Debug.Log($"Row: {row}, Col: {col}");
             gridSquares[row, col] = squares[i];
-            
+
+            if (row == 3) 
+            {
+                gridSquares[row, col].SetInteractable(true); // Make interactable
+            }
+            else
+            {
+                gridSquares[row, col].SetInteractable(false); // Disable interaction
+            }
+
             // Subscribe to each square's changes
             int capturedRow = row;
             int capturedCol = col;
@@ -150,7 +173,7 @@ public class HouseBuildingGridController : MonoBehaviour
         Debug.Log($"Loading house {ActiveHouse.CurrentHouse.ToString()}");
 
 
-        for (int row = 0; row < 4; row++) 
+        for (int row = 0; row < 3; row++) 
         {
             for (int col = 0; col < 3; col++) 
             {
@@ -163,6 +186,43 @@ public class HouseBuildingGridController : MonoBehaviour
         if (rectTransform != null)
         {
             LayoutRebuilder.ForceRebuildLayoutImmediate(rectTransform);
+        }
+    }
+
+    public void SetAboveBottomRowInteractable(bool isDoorDragging)
+    {
+        if (isDoorDragging)
+        {
+            // Store current states only when disabling
+            for (int row = 0; row < gridSquares.GetLength(0) - 1; row++) // Iterate above the bottom row
+            {
+                for (int col = 0; col < gridSquares.GetLength(1); col++)
+                {
+                    var square = gridSquares[row, col];
+                    if (square != null && !interactableStates.ContainsKey(square))
+                    {
+                        // Save the current interactable state
+                        interactableStates[square] = square.GetComponent<Button>().interactable;
+
+                        // Disable the square
+                        square.SetInteractable(false);
+                    }
+                }
+            }
+        }
+        else
+        {
+            // Restore original states when re-enabling
+            foreach (var kvp in interactableStates)
+            {
+                if (kvp.Key != null)
+                {
+                    kvp.Key.SetInteractable(kvp.Value);
+                }
+            }
+
+            // Clear the dictionary after restoring
+            interactableStates.Clear();
         }
     }
 

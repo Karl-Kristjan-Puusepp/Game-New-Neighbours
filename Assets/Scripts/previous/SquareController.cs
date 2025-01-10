@@ -45,6 +45,12 @@ public class SquareController : MonoBehaviour, IDropHandler, IPointerClickHandle
         GameObject droppedObject = eventData.pointerDrag;
         Debug.Log($"Dropped object: {(droppedObject ? droppedObject.name : "null")}");
 
+        if (squareButton != null && !squareButton.interactable)
+        {
+            Debug.Log("Square is not interactable. Drop ignored.");
+            return; // Return if the square is not interactable
+        }
+
         HouseBlockController originalController = droppedObject.GetComponent<HouseBlockController>();
         
         if (originalController != null)
@@ -97,10 +103,52 @@ public class SquareController : MonoBehaviour, IDropHandler, IPointerClickHandle
                 // Trigger the change event
                 OnTileChanged?.Invoke();
 
+                if (newSprite.name == "door")
+                {
+                    var gridController = FindObjectOfType<HouseBuildingGridController>();
+                    gridController.SetAboveBottomRowInteractable(false);
+
+                }
+
                 // Destroy the copy after a short delay
                 Destroy(droppedObject, 0.1f);
+
+                
+
+                if (newSprite.name != "Roof right" && newSprite.name != "RoofRight" && newSprite.name != "RoofCenter") // Replace with the actual sprite name
+                {
+                    MakeSquareAboveInteractable();
+                }
+
+                
             }
         }
+    }
+    private void MakeSquareAboveInteractable()
+    {
+        // Find this square's position in the grid
+        for (int row = 0; row < HouseBuildingGridController.Instance.gridSquares.GetLength(0); row++)
+        {
+            for (int col = 0; col < HouseBuildingGridController.Instance.gridSquares.GetLength(1); col++)
+            {
+                if (HouseBuildingGridController.Instance.gridSquares[row, col] == this)
+                {
+                    int aboveRow = row - 1;
+                    if (aboveRow >= 0) // Check if there's a row above
+                    {
+                        SquareController squareAbove = HouseBuildingGridController.Instance.gridSquares[aboveRow, col];
+                        if (squareAbove != null)
+                        {
+                            squareAbove.SetInteractable(true); // Make it interactable
+                            Debug.Log($"Square above at row {aboveRow}, col {col} made interactable.");
+                        }
+                    }
+                    return; // Exit once the square is found
+                }
+            }
+        }
+
+        Debug.LogWarning("Square's position in the grid could not be found.");
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -198,5 +246,10 @@ public class SquareController : MonoBehaviour, IDropHandler, IPointerClickHandle
     public HouseTile GetCurrentTile()
     {      
         return new HouseTile(squareImage.sprite, squareImage.color);
+    }
+
+    public void SetInteractable(bool isInteractable)
+    {
+        GetComponent<Button>().interactable = isInteractable;
     }
 }

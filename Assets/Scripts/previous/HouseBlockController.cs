@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -13,6 +14,8 @@ public class HouseBlockController : MonoBehaviour, IBeginDragHandler, IDragHandl
     private CanvasGroup canvasGroup;
     [HideInInspector]
     public bool wasDropped = false;  // New flag to track successful drops
+
+
 
     private void Awake()
     {
@@ -40,6 +43,12 @@ public class HouseBlockController : MonoBehaviour, IBeginDragHandler, IDragHandl
         {
             copyController.enabled = false;  // Disable the script on the copy
         }
+        if (draggedCopy.GetComponent<Image>().sprite.name == "door")
+        {
+            var gridController = FindObjectOfType<HouseBuildingGridController>();
+            gridController.SetAboveBottomRowInteractable( true);
+        }
+
 
         // Get the RectTransform of the copy
         RectTransform draggedRectTransform = draggedCopy.GetComponent<RectTransform>();
@@ -90,6 +99,8 @@ public class HouseBlockController : MonoBehaviour, IBeginDragHandler, IDragHandl
     {
         canvasGroup.alpha = 1f;
 
+        
+
         // Only destroy the copy if it wasn't successfully dropped
         if (draggedCopy != null && !wasDropped)
         {
@@ -102,5 +113,7 @@ public class HouseBlockController : MonoBehaviour, IBeginDragHandler, IDragHandl
     {
         return draggedCopy;
     }
+
+    
 }
 
