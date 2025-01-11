@@ -21,6 +21,8 @@ public class Game : MonoBehaviour
     public TextMeshProUGUI HappinessText;
     public TextMeshProUGUI ButtonText;
 
+    public List<CustomerData> HappyCustomers;
+
     private CustomerData currentCustomer;
     private static int currentCustomerID = 0;
 
@@ -72,8 +74,8 @@ public class Game : MonoBehaviour
                 Button lotButton = child.GetComponent<Button>();
                 if (lotButton != null)
                 {
-                    Debug.Log($"Setting interactable for button: {child.name} to {count < 4}");
-                    lotButton.interactable = count < 4; // Enable only the first 4
+                    Debug.Log($"Setting interactable for button: {child.name} to true");
+                    lotButton.interactable = true;//count < 4; // Enable only the first 4
                     count++;
                 }
                 else
