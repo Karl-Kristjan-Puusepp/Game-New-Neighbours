@@ -84,18 +84,21 @@ public class HouseBuildingGridController : MonoBehaviour
         }
     }
 
-    public void SaveAsActiveHouse() {
-        House currHouse = new House();
+    public void CountThings(House currHouse)
+    {
+        doorInt = 0;
+        windowInt = 0;
         for (int row = 0; row < 4; row++)
         {
             for (int col = 0; col < 3; col++)
-            {   
+            {
                 HouseTile currTile = gridSquares[row, col].GetCurrentTile();
-                if(currTile == null){
+                if (currTile == null)
+                {
                     Debug.Log($"Tile null at row:{row} and col:{col}");
                     continue;
                 }
-                if (gridSquares[row, col].squareImage.sprite.name == "door") 
+                if (gridSquares[row, col].squareImage.sprite.name == "door")
                 {
                     doorInt += 1;
                 }
@@ -103,15 +106,22 @@ public class HouseBuildingGridController : MonoBehaviour
                 {
                     windowInt += 1;
                 }
-                if (gridSquares[row, col].squareImage.sprite.name == "twowindow" )
+                if (gridSquares[row, col].squareImage.sprite.name == "twowindow")
                 {
                     windowInt += 2;
                 }
-                currHouse.tiles[row, col] = currTile;                       
+                currHouse.tiles[row, col] = currTile;
             }
         }
-        Debug.Log("AMOUNT OF DOORS CALCULATED: "+doorInt);
+        Debug.Log("AMOUNT OF DOORS CALCULATED: " + doorInt);
         Debug.Log("AMOUNT OF WINDOWS CALCULATED: " + windowInt);
+
+    }
+
+    public void SaveAsActiveHouse() {
+        House currHouse = new House();
+
+        CountThings(currHouse);
 
         ActiveHouse.SetHouse(currHouse);
         CheckRequirements(doorInt, windowInt);

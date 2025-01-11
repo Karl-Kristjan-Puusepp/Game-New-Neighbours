@@ -43,6 +43,7 @@ public class HouseBlockController : MonoBehaviour, IBeginDragHandler, IDragHandl
         {
             copyController.enabled = false;  // Disable the script on the copy
         }
+
         if (draggedCopy.GetComponent<Image>().sprite.name == "door")
         {
             var gridController = FindObjectOfType<HouseBuildingGridController>();

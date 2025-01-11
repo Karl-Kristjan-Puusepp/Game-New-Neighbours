@@ -7,13 +7,26 @@ public class DoneButtonController : MonoBehaviour
 {
     public HouseBuildingGridController grid;
     public GameObject happyPanel;
+    public GameObject doorPanel;
 
     private bool isPanelOpen = false;
 
     public void OnButtonClicked() {
         Debug.Log("Done button clicked");
-        grid.SaveAsActiveHouse();
-        TogglePanel();
+        House currHouse = new House();
+
+        grid.CountThings(currHouse);
+        
+        if(grid.doorInt > 0) {
+            grid.SaveAsActiveHouse();
+            TogglePanel();
+            
+        }
+        else
+        {
+            showDoorMessage();
+        }
+        
         
     }
     
@@ -23,6 +36,30 @@ public class DoneButtonController : MonoBehaviour
         {
             happyPanel.SetActive(false);
         }
+        if (doorPanel != null)
+        {
+            doorPanel.SetActive(false);
+        }
+    }
+
+    public void showDoorMessage()
+    {   
+        doorPanel.SetActive(true);
+        doorPanel.GetComponent<CanvasGroup>().alpha = 1.0f;
+        StartCoroutine(DoFade());
+    }
+
+    IEnumerator DoFade()
+    {
+        
+        CanvasGroup canvasgroup = doorPanel.GetComponent<CanvasGroup>();
+        while (canvasgroup.alpha > 0)
+        {
+            canvasgroup.alpha -= Time.deltaTime / 4;
+            yield return null;
+        }
+        canvasgroup.interactable = false;
+        yield return null;
     }
 
     public void TogglePanel()
