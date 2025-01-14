@@ -2,7 +2,6 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
-/[Aa]ssets/StreamingAssets/build_info
 
 /[Ll]ibrary/
 /[Tt]emp/
@@ -13,7 +12,10 @@
 /[Uu]ser[Ss]ettings/
 
 # Ignore build_info
-Assets/StreamingAssets/build_info
+[Aa]ssets/StreamingAssets/build_info
+[Aa]ssets/StreamingAssets/build_info.meta
+/[Aa]ssets/StreamingAssets/build_info
+/[Aa]ssets/StreamingAssets/build_info.meta
 
 
 # MemoryCaptures can get excessive in size.
