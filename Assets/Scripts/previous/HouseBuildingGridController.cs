@@ -160,6 +160,7 @@ public class HouseBuildingGridController : MonoBehaviour
         {
             HappyText.text = $"{customerData.CustomerName} is happy !!";
             SceneData.happyCustomers += 1;
+            Game.AddHappyCustomer(customerData.CustomerName.ToLower());
         }
         else if (requirementspercentage == 0.0)
         {
@@ -169,6 +170,7 @@ public class HouseBuildingGridController : MonoBehaviour
         {
             HappyText.text = $"{customerData.CustomerName} feels a bit disappointed.";
             SceneData.happyCustomers += Math.Round(requirementspercentage, 2);
+            Game.AddHappyCustomer(customerData.CustomerName.ToLower());
         }
 
         HappyImage.sprite = SceneData.CurrentCustomerStatic.CustomerSprite;
