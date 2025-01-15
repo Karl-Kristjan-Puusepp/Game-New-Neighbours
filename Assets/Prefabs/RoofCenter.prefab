@@ -61,9 +61,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc48ab86e3606b64ca07529b3bd1b414, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wasDropped: 0
   isDoor: 0
   windows: 0
-  wasDropped: 0
 --- !u!114 &6719230456029384069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,6 +162,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc48ab86e3606b64ca07529b3bd1b414, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wasDropped: 0
   isDoor: 0
   windows: 0
-  wasDropped: 0
