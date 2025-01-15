@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Bird
   m_EditorClassIdentifier: 
   requirementText: I want as tall of a house as possible !
-  windowsRequired: 0
-  doorsRequired: 0
+  windowsRequired: -1
+  doorsRequired: -1
   CustomerSprite: {fileID: 21300000, guid: ec2c4bc73d447144e91cfe5a8429bb45, type: 3}
-  CustomerNoise: {fileID: 0}
+  CustomerNoise: {fileID: 8300000, guid: 4de2f3c09f77b8a42ba88e1832f329dc, type: 3}
   CustomerName: Bird
