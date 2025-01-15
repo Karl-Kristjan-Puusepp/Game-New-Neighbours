@@ -6,7 +6,7 @@ public class SquareController : MonoBehaviour, IDropHandler, IPointerClickHandle
 {
     public event Action OnTileChanged;
     public Image squareImage;
-    private Button squareButton;
+    public Button squareButton;
     private const string FILLED_TAG = "FilledTile";  // Define the tag as a constant
     private bool IsDoor;
 

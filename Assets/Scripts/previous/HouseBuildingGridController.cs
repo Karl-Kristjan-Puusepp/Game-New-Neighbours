@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using UnityEngine.U2D;
 using UnityEngine.Tilemaps;
 using System.Threading.Tasks;
@@ -18,6 +17,7 @@ public class HouseBuildingGridController : MonoBehaviour
     public Image HappyImage;
     //private bool ready = false; 
     public TextMeshProUGUI HappyText;
+    public Sprite empty;
     public static HouseBuildingGridController Instance { get; private set; }
 
 
@@ -63,6 +63,7 @@ public class HouseBuildingGridController : MonoBehaviour
             int row = i / 3;
             Debug.Log($"Row: {row}, Col: {col}");
             gridSquares[row, col] = squares[i];
+            //gridSquares[row, col].squareImage.sprite = empty;
 
             if (row == 3) 
             {
@@ -174,6 +175,35 @@ public class HouseBuildingGridController : MonoBehaviour
         SceneData.customersTotal += 1;
 
 
+    }
+
+    public void EraseHouse()
+    {
+        for (int row = 0; row < gridSquares.GetLength(0); row++)
+        {
+            for (int col = 0; col < gridSquares.GetLength(1); col++)
+            {
+                SquareController square = gridSquares[row, col];
+                if (square != null)
+                {
+                    // Set the sprite to the empty sprite
+                    square.squareImage.sprite = empty;
+                    Button squareButton = square.squareButton;
+                    if (squareButton != null)
+                    {
+
+                        ColorBlock colors = squareButton.colors;
+                        Color newNormalColor = colors.normalColor;
+                        newNormalColor.a = 0.87f;
+                        colors.normalColor = newNormalColor;
+                        squareButton.colors = colors;
+                    }
+                }
+            }
+        }
+
+        Debug.Log("All grid squares reset to empty.");
+        InitializeGrid();
     }
 
     public async void LoadActiveHouse() {
