@@ -10,9 +10,17 @@ public class MiniGridController : MonoBehaviour
     [SerializeField] private Sprite defaultSprite; 
     [SerializeField] private Color defaultColor = Color.clear;
 
+    private Button parentButton;
+    private LotController lotController;
+
     private void Awake() {
         gridCells = new Image[4, 3];
         int index = 0;
+        parentButton = GetComponentInParent<Button>();
+        if (parentButton != null)
+        {
+            lotController = parentButton.GetComponent<LotController>(); // Get the LotController component
+        }
 
         foreach (Transform child in transform) 
         {
@@ -49,7 +57,7 @@ public class MiniGridController : MonoBehaviour
     {
         Awake();
         if (house == null) return;
-
+        bool hasNonDefaultTiles = false;
         // Load the house data into the grid
         for (int row = 0; row < 4; row++)
         {
@@ -69,9 +77,17 @@ public class MiniGridController : MonoBehaviour
                     gridCells[row, col].sprite = tile.sprite;
                     gridCells[row, col].color = tile.color;
                     gridCells[row, col].SetNativeSize();
+                    hasNonDefaultTiles = true;
                     Debug.Log($"Grid cell r:{row}, c:{col} set to {tile.sprite.name}");
                 }
             }
+        }
+
+        if (parentButton != null && hasNonDefaultTiles)
+        {
+            parentButton.interactable = false;
+            lotController.hasHouse = true;
+            Debug.Log("Parent button has been set to non-interactable.");
         }
         RectTransform rectTransform = GetComponent<RectTransform>();
         if (rectTransform != null)

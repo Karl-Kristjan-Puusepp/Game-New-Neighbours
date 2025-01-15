@@ -8,6 +8,7 @@ using UnityEngine.Tilemaps;
 using System.Threading.Tasks;
 using static Reporter;
 using TMPro;
+using Unity.VisualScripting;
 
 public class HouseBuildingGridController : MonoBehaviour
 {
@@ -130,42 +131,45 @@ public class HouseBuildingGridController : MonoBehaviour
     private void CheckRequirements(int doorInt, int windowInt)
     {
         CustomerData customerData = SceneData.CurrentCustomerStatic;
-        bool requirementsFulfilled = false;
+
+        double requirementsTotal = 0;
+
+        double requirementsSatisfied = 0;
+
         Debug.Log("Doors required: "+ customerData.doorsRequired+ ", doors on house: "+ doorInt);
         Debug.Log("Windows required: "+ customerData.windowsRequired+ ", windows on house: "+ windowInt);
         if (customerData.doorsRequired!= -1)
         {
-            Debug.Log("Doors required: "+ customerData.doorsRequired);
             if (customerData.doorsRequired == doorInt)
             {
-                requirementsFulfilled = true;
+                requirementsSatisfied++;
             }
-            else
-            {
-                requirementsFulfilled = false;
-            }
+            requirementsTotal++;
         }
         if (customerData.windowsRequired != -1)
         {
-            Debug.Log("Windows required: "+ customerData.windowsRequired);
             if (customerData.windowsRequired == windowInt)
             {
-                requirementsFulfilled = true;
+                requirementsSatisfied++;
             }
-            else
-            {
-                requirementsFulfilled = false;
-            }
+            requirementsTotal++;
         }
-        if (requirementsFulfilled)
+        double requirementspercentage = requirementsSatisfied / requirementsTotal;
+        if (requirementspercentage == 1.0)
         {
             HappyText.text = $"{customerData.CustomerName} is happy !!";
             SceneData.happyCustomers += 1;
         }
+        else if (requirementspercentage == 0.0)
+        {
+            HappyText.text = $"{customerData.CustomerName} is devastated...";
+        }
         else
         {
-            HappyText.text = $"{customerData.CustomerName} is not very happy...";
+            HappyText.text = $"{customerData.CustomerName} feels a bit disappointed.";
+            SceneData.happyCustomers += Math.Round(requirementspercentage, 2);
         }
+
         HappyImage.sprite = SceneData.CurrentCustomerStatic.CustomerSprite;
         SceneData.customersTotal += 1;
 

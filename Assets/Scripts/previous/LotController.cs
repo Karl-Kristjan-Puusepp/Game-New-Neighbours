@@ -19,6 +19,8 @@ public class LotController : MonoBehaviour
     public int row;
     public int col;
 
+    public bool hasHouse = false;
+
     private void Awake()
     {
         

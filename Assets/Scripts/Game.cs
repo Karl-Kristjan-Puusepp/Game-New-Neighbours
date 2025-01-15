@@ -8,6 +8,7 @@ using UnityEngine.UI;
 using TMPro;
 
 using System.Threading.Tasks;
+using System;
 
 public class Game : MonoBehaviour
 {
@@ -40,6 +41,8 @@ public class Game : MonoBehaviour
         foreach (Transform child in AllLots.transform)
         {
             Button lotButton = child.GetComponent<Button>();
+            
+
             if (lotButton != null)
             {
                 lotButton.interactable = false;
@@ -72,13 +75,17 @@ public class Game : MonoBehaviour
             foreach (Transform child in AllLots.transform)
             {
                 Button lotButton = child.GetComponent<Button>();
-                if (lotButton != null)
+                LotController lotController = lotButton.GetComponent<LotController>();
+                if (lotButton != null && !lotController.hasHouse)
                 {
                     Debug.Log($"Setting interactable for button: {child.name} to true");
                     lotButton.interactable = true;//count < 4; // Enable only the first 4
                     count++;
                 }
-                else
+                else if (lotController.hasHouse)
+                {
+                    Debug.Log($"Button: {child.name} already has a house, so it is not interactable");
+                }else 
                 {
                     Debug.Log($"could not set interactable for button: {child.name}");
                 }
@@ -96,7 +103,7 @@ public class Game : MonoBehaviour
 
     private async void EndGame()
     {
-        int happinessPercentage = (SceneData.happyCustomers * 100) / SceneData.customersTotal;
+        double happinessPercentage = Math.Round((SceneData.happyCustomers * 100) / SceneData.customersTotal, 2);
         string gameEndString = $"You achieved {happinessPercentage}% happiness.\n";
         if (happinessPercentage == 100) gameEndString += "WOW! The townsfolk couldn't be happier!";
         else if (happinessPercentage >= 75) gameEndString += "Impressive! The townsfolk are very happy!";
