@@ -155,7 +155,42 @@ public class HouseBuildingGridController : MonoBehaviour
             }
             requirementsTotal++;
         }
+        if (customerData.widthRequired != -1)
+        {
+            int widthInt = 0;
+            for (int col = 0; col < 3; col++) {
+
+
+                if (gridSquares[3, col].squareImage.sprite.name != "BuildingTileEmpty")
+                {
+                    widthInt++;
+                }
+            }
+            if (widthInt == customerData.widthRequired) requirementsSatisfied++;
+
+            requirementsTotal++;
+        }
+        if (customerData.heightRequired != -1)
+        {
+            bool heightFulfilled = false;
+            for (int col = 0; col < 3; col++)
+            {
+
+
+                if (gridSquares[customerData.heightRequired - 1, col].squareImage.sprite.name != "BuildingTileEmpty")
+                {
+                    heightFulfilled = true;
+                }
+            }
+            if (heightFulfilled) requirementsSatisfied++;
+
+            requirementsTotal++;
+        }
+
+
         double requirementspercentage = requirementsSatisfied / requirementsTotal;
+        if (requirementsTotal == 0.0) requirementspercentage = 1.0;
+
         if (requirementspercentage == 1.0)
         {
             HappyText.text = $"{customerData.CustomerName} is happy !!";

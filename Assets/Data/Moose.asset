@@ -15,6 +15,12 @@ MonoBehaviour:
   requirementText: I want a house next to the forest
   windowsRequired: -1
   doorsRequired: -1
+  widthRequired: -1
+  heightRequired: -1
+  wallColorRequired: 
+  roofColorRequired: 
+  locationRequired: tree
+  separateHouses: 0
   CustomerSprite: {fileID: 21300000, guid: 86cb0dc617311d649afe376d25533a8d, type: 3}
   CustomerNoise: {fileID: 8300000, guid: 385707e2d14ae654f93518f224466cbf, type: 3}
   CustomerName: Moose

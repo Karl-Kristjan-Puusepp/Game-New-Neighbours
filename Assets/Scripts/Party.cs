@@ -9,15 +9,17 @@ public class Party : MonoBehaviour
 {
     public static Image[] allImages;
 
-    private void Start()
+    void Awake()
     {
         allImages = GetComponentsInChildren<Image>();
     }
+
     public static void FilterImages()
     {
         Debug.Log("FIltering images");
         List<string> allowedSpriteNames = Game.happySpriteNames;
         Debug.Log($"allowed names are {string.Join(", ", allowedSpriteNames)}");
+        Debug.Log(allImages);
         // Iterate through all child images
         foreach (Image childImage in allImages)
         {
