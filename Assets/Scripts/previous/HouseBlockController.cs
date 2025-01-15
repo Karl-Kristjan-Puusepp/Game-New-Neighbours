@@ -44,10 +44,19 @@ public class HouseBlockController : MonoBehaviour, IBeginDragHandler, IDragHandl
             copyController.enabled = false;  // Disable the script on the copy
         }
 
-        if (draggedCopy.GetComponent<Image>().sprite.name == "door")
+        var copySpriteName = draggedCopy.GetComponent<Image>().sprite.name;
+
+
+        if (copySpriteName == "door")
         {
             var gridController = FindObjectOfType<HouseBuildingGridController>();
-            gridController.SetAboveBottomRowInteractable( true);
+            gridController.SetBottomRowInteractable();
+        }
+
+        if (copySpriteName == "Roof right" || copySpriteName == "RoofRight" || copySpriteName == "RoofCenter")
+        {
+            var gridController = FindObjectOfType<HouseBuildingGridController>();
+            gridController.SetTopRowInteractable();
         }
 
 
@@ -105,6 +114,8 @@ public class HouseBlockController : MonoBehaviour, IBeginDragHandler, IDragHandl
         // Only destroy the copy if it wasn't successfully dropped
         if (draggedCopy != null && !wasDropped)
         {
+            var gridController = FindObjectOfType<HouseBuildingGridController>();
+            gridController.SetSquaresBackToInteractable();
             Debug.Log("Drag ended without successful drop - destroying copy");
             Destroy(draggedCopy);
         }

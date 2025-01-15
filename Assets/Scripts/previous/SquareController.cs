@@ -80,14 +80,19 @@ public class SquareController : MonoBehaviour, IDropHandler, IPointerClickHandle
                 // Update the square's sprite and color
                 squareImage.sprite = newSprite;
                 squareImage.color = newColor;
+
                 
                 // If this square has a button component, update its colors too
                 if (squareButton != null)
                 {
+                    
                     ColorBlock colors = squareButton.colors;
-                    colors.normalColor = newColor;
+                    Color newNormalColor = colors.normalColor;
+                    newNormalColor.a = 1f;
+                    colors.normalColor = newNormalColor;
                     squareButton.colors = colors;
                 }
+                
 
                 // Mark as filled
                 gameObject.tag = FILLED_TAG;
@@ -103,10 +108,10 @@ public class SquareController : MonoBehaviour, IDropHandler, IPointerClickHandle
                 // Trigger the change event
                 OnTileChanged?.Invoke();
 
-                if (newSprite.name == "door")
+                if (newSprite.name == "door" || newSprite.name == "Roof right" || newSprite.name == "RoofRight" || newSprite.name == "RoofCenter")
                 {
                     var gridController = FindObjectOfType<HouseBuildingGridController>();
-                    gridController.SetAboveBottomRowInteractable(false);
+                    gridController.SetSquaresBackToInteractable();
 
                 }
 

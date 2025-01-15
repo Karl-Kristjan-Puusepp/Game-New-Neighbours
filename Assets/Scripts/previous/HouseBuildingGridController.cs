@@ -199,135 +199,75 @@ public class HouseBuildingGridController : MonoBehaviour
         }
     }
 
-    public void SetAboveBottomRowInteractable(bool isDoorDragging)
+    public void SetBottomRowInteractable()
     {
-        if (isDoorDragging)
+        for (int row = 0; row < gridSquares.GetLength(0) - 1; row++) // Iterate above the bottom row
         {
-            // Store current states only when disabling
-            for (int row = 0; row < gridSquares.GetLength(0) - 1; row++) // Iterate above the bottom row
+            for (int col = 0; col < gridSquares.GetLength(1); col++)
             {
-                for (int col = 0; col < gridSquares.GetLength(1); col++)
+                var square = gridSquares[row, col];
+                if (square != null && !interactableStates.ContainsKey(square))
                 {
-                    var square = gridSquares[row, col];
-                    if (square != null && !interactableStates.ContainsKey(square))
+                    // Save the current interactable state
+                    interactableStates[square] = square.GetComponent<Button>().interactable;
+
+                    // Disable the square
+                    square.SetInteractable(false);
+                }
+            }
+        }
+        
+    }
+
+    public void SetTopRowInteractable()
+    {
+        for (int col = 0; col < gridSquares.GetLength(1); col++)
+        {
+            bool foundTopInteractable = false;
+
+            for (int row = 0; row < gridSquares.GetLength(0); row++)
+            {
+                var square = gridSquares[row, col];
+                if (square != null)
+                {
+                    var button = square.GetComponent<Button>();
+
+                    if (!foundTopInteractable && button.interactable)
                     {
-                        // Save the current interactable state
-                        interactableStates[square] = square.GetComponent<Button>().interactable;
+                        // Mark this square as the top-most interactable
+                        foundTopInteractable = true;
+                    }
+                    else
+                    {
+                        // Save the current interactable state if not already saved
+                        if (!interactableStates.ContainsKey(square))
+                        {
+                            interactableStates[square] = button.interactable;
+                        }
 
                         // Disable the square
-                        square.SetInteractable(false);
+                        button.interactable = false;
                     }
-                }
-            }
-        }
-        else
-        {
-            // Restore original states when re-enabling
-            foreach (var kvp in interactableStates)
-            {
-                if (kvp.Key != null)
-                {
-                    kvp.Key.SetInteractable(kvp.Value);
-                }
-            }
 
-            // Clear the dictionary after restoring
-            interactableStates.Clear();
+                }
+            }
         }
+       
     }
 
-    /*
-    private void OnSquareChanged(int row, int col)
+    public void SetSquaresBackToInteractable()
     {
-        // Find the currently active lot
-        LotController currentLot = FindCurrentLot();
-        if (currentLot != null)
+        // Restore original states when re-enabling
+        foreach (var kvp in interactableStates)
         {
-            //SaveCurrentStateToLot(currentLot);
-        }
-
-    }
-    
-    
-    private LotController FindCurrentLot()
-    {
-        foreach (LotController lot in FindObjectsOfType<LotController>())
-        {
-            if (lot.gameObject.GetComponent<Button>().interactable == false)  // Assuming selected lot has button disabled
+            if (kvp.Key != null)
             {
-                return lot;
+                kvp.Key.SetInteractable(kvp.Value);
             }
         }
-        return null;
-    }
-    */
 
-    /*
-    public void LoadHouseFromLot(LotController lot)
-    {
-        // Disable the button of the selected lot to mark it as active
-        lot.GetComponent<Button>().interactable = false;
-        
-        // Enable all other lot buttons
-        foreach (LotController otherLot in FindObjectsOfType<LotController>())
-        {
-            if (otherLot != lot )
-            {
-                otherLot.GetComponent<Button>().interactable = true;
-            }
-        }
-        /
-        // Load the house data into the grid
-        for (int row = 0; row < 3; row++)
-        {
-            for (int col = 0; col < 4; col++)
-            {
-                TileData tileData = lot.houseData.tiles[row, col];
-               
-                gridSquares[row, col].SetTile(tileData.sprite, tileData.color);
-
-                Debug.Log($"Loading house state from lot: {lot.gameObject.name} tile at ({row}, {col}): sprite={tileData.sprite}");
-
-                // Update the filled state
-                if (tileData.isFilled)
-                {
-                    gridSquares[row, col].gameObject.tag = "FilledTile";
-                }
-                else
-                {
-                    gridSquares[row, col].gameObject.tag = "Untagged";
-                }
-                
-            }
-        }
-        
-        
+        // Clear the dictionary after restoring
+        interactableStates.Clear();
     }
 
-    public void SaveCurrentStateToLot(LotController lot)
-    {
-        for (int row = 0; row < 3; row++)
-        {
-            for (int col = 0; col < 4; col++)
-            {
-                SquareController square = gridSquares[row, col];
-                var (sprite, color, door) = square.GetCurrentTile();
-
-                if (door && lot.firstHouse)
-                {
-                    Debug.Log($"lot: {lot.gameObject.name} tile at ({row}, {col}): sprite={lot.houseData.tiles[row, col].sprite}");
-                    doorInt += 1;
-                    Debug.Log($"{doorInt}");
-                }
-                lot.houseData.tiles[row, col] = new TileData(
-                    sprite,
-                    color,
-                    square.IsFilled()
-                );
-                //Debug.Log($"Saving house state from lot: {lot.gameObject.name} tile at ({row}, {col}): sprite={lot.houseData.tiles[row, col].sprite}");
-            }
-        }
-        //Debug.Log($"Saved house state to lot: {lot.gameObject.name}");
-    }
-    */
 }
