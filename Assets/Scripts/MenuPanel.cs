@@ -11,6 +11,7 @@ public class MenuPanel : MonoBehaviour
 {
     public Button ExitButton;
     public Button PlayButton;
+    public Button TutorialButton;
 
     public AnimationCurve Curve;
     public float Duration = 1;
@@ -23,6 +24,7 @@ public class MenuPanel : MonoBehaviour
     {
         ExitButton.onClick.AddListener(Exit);
         PlayButton.onClick.AddListener(Play);
+        TutorialButton.onClick.AddListener(Tutorial);
         timeAggregate = 0;
         transform.localScale = StartScale;
     }
@@ -37,7 +39,11 @@ public class MenuPanel : MonoBehaviour
         Application.Quit();
     }
 
-    
+    public void Tutorial()
+    {
+        SceneManager.LoadScene("TutorialMapScene");
+    }
+
 
     void Update()
     {
