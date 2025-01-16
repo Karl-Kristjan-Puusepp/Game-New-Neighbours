@@ -1336,8 +1336,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Are you sure you want to start this house from scratch?
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ca8c2c4977ad81a4fadfbdb174d61e4a, type: 2}
+  m_sharedMaterial: {fileID: 9148700259543848175, guid: ca8c2c4977ad81a4fadfbdb174d61e4a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2259,6 +2259,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RoofLeft
       objectReference: {fileID: 0}
+    - target: {fileID: 2557602963153770680, guid: 82c909239d7a04a4a820cb26b6850ef5, type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 519256374}
     - target: {fileID: 6592218108623626103, guid: 82c909239d7a04a4a820cb26b6850ef5, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2361,6 +2365,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6592218108623626103, guid: 82c909239d7a04a4a820cb26b6850ef5, type: 3}
   m_PrefabInstance: {fileID: 519256372}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &519256374 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8043887761560254560, guid: 82c909239d7a04a4a820cb26b6850ef5, type: 3}
+  m_PrefabInstance: {fileID: 519256372}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &525732669 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3635044053234241531, guid: a127bc4d7c2c0f640b3e10973dd6e9bf, type: 3}
@@ -5167,8 +5182,20 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 498481534679652922, guid: 5adfb4eef29bf3d4b8303291118d0997, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 394e6df912062794fb45a0e024d2dc8c, type: 2}
+    - target: {fileID: 498481534679652922, guid: 5adfb4eef29bf3d4b8303291118d0997, type: 3}
       propertyPath: m_fontSizeBase
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 498481534679652922, guid: 5adfb4eef29bf3d4b8303291118d0997, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 5359054210430583021, guid: 394e6df912062794fb45a0e024d2dc8c, type: 2}
+    - target: {fileID: 498481534679652922, guid: 5adfb4eef29bf3d4b8303291118d0997, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 718708063975422573, guid: 5adfb4eef29bf3d4b8303291118d0997, type: 3}
       propertyPath: m_Pivot.x
@@ -5373,6 +5400,18 @@ PrefabInstance:
     - target: {fileID: 7054038272045702457, guid: 5adfb4eef29bf3d4b8303291118d0997, type: 3}
       propertyPath: m_text
       value: YES
+      objectReference: {fileID: 0}
+    - target: {fileID: 7054038272045702457, guid: 5adfb4eef29bf3d4b8303291118d0997, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 394e6df912062794fb45a0e024d2dc8c, type: 2}
+    - target: {fileID: 7054038272045702457, guid: 5adfb4eef29bf3d4b8303291118d0997, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 5359054210430583021, guid: 394e6df912062794fb45a0e024d2dc8c, type: 2}
+    - target: {fileID: 7054038272045702457, guid: 5adfb4eef29bf3d4b8303291118d0997, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9017504173470885679, guid: 5adfb4eef29bf3d4b8303291118d0997, type: 3}
       propertyPath: m_Name
