@@ -662,7 +662,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7691475978917207788, guid: 9549ab9b63bdc894b8e89f76aa02f3c9, type: 3}
       propertyPath: m_HorizontalAlignment
-      value: 16
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8013874404585118426, guid: 9549ab9b63bdc894b8e89f76aa02f3c9, type: 3}
       propertyPath: m_Layer
