@@ -16,7 +16,8 @@ public class Game : MonoBehaviour
     public List<CustomerData> Customers;
     public GameObject AllLots;
     public GameObject CustomerPanelObject;
-    public GameObject SmallMenuPanel;
+    public GameObject EndMenuPanel;
+    public EndScreen endScreen;
     public TextMeshProUGUI GameEndText;
     private CustomerPanel customerPanel;
     public TextMeshProUGUI HappinessText;
@@ -72,8 +73,9 @@ public class Game : MonoBehaviour
 
     private void NextCustomer()
     {
-        newCustomer.interactable = false;
+        
         if (currentCustomerID < Customers.Count) {
+            newCustomer.interactable = false;
             currentCustomer = Customers[currentCustomerID];
             currentCustomerID++;
             CustomerPanelObject.SetActive(true);
@@ -186,7 +188,8 @@ public class Game : MonoBehaviour
         
         await(Task.Delay(300)); //MenuPanel doesn't open without this wait
 
-        SmallMenuPanel.SetActive(true);
+        //SmallMenuPanel.SetActive(true);
+        endScreen.TogglePanel();
         return;
     }
 }

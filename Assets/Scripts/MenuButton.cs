@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MenuButton : MonoBehaviour
 {
     public GameObject mainPanel; 
-    public GameObject menuPanel; 
+    public GameObject menuPanel;
+    public Button ContinueButton;
 
     private bool isPanelOpen = false; 
 
@@ -24,6 +26,7 @@ public class MenuButton : MonoBehaviour
             isPanelOpen = !isPanelOpen; 
             mainPanel.SetActive(isPanelOpen); 
         }
+        ContinueButton.onClick.AddListener(ClosePanel);
     }
 
     void Update()
