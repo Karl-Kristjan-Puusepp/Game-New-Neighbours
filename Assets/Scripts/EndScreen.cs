@@ -3,37 +3,42 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MenuButton : MonoBehaviour
-{
-    public GameObject mainPanel; 
-    public GameObject menuPanel;
-    public Button ContinueButton;
+using UnityEngine.SceneManagement;
 
-    private bool isPanelOpen = false; 
+public class EndScreen : MonoBehaviour
+{
+    public Button TitleButton;
+    public GameObject mainPanel;
+    public GameObject menuPanel;
+    private bool isPanelOpen = false;
 
     void Start()
     {
+        TitleButton.onClick.AddListener(ToTitleScreen);
         if (mainPanel != null)
         {
-            mainPanel.SetActive(false); 
+            mainPanel.SetActive(false);
         }
-        ContinueButton.onClick.AddListener(ClosePanel);
+
     }
+    public void ToTitleScreen()
+    {
+        SceneManager.LoadScene("Title");
+    }
+    
 
     public void TogglePanel()
     {
-        Debug.Log("Click clikc click");
         if (mainPanel != null)
         {
-            Debug.Log("whaaaatt");
-            isPanelOpen = !isPanelOpen; 
-            mainPanel.SetActive(isPanelOpen); 
+            isPanelOpen = !isPanelOpen;
+            mainPanel.SetActive(isPanelOpen);
         }
     }
 
     void Update()
     {
-        
+
         if (isPanelOpen && Input.GetMouseButtonDown(0))
         {
             //if (!IsPointerOverUIElement(menuPanel))
@@ -51,7 +56,8 @@ public class MenuButton : MonoBehaviour
             mainPanel.SetActive(false);
         }
     }
-    
+
+    /*
     private bool IsPointerOverUIElement(GameObject targetPanel)
     {
         RectTransform rectTransform = targetPanel.GetComponent<RectTransform>();
@@ -61,5 +67,6 @@ public class MenuButton : MonoBehaviour
 
         return rectTransform.rect.Contains(localMousePosition);
     }
-    
+    */
+
 }

@@ -16,7 +16,8 @@ public class Game : MonoBehaviour
     public List<CustomerData> Customers;
     public GameObject AllLots;
     public GameObject CustomerPanelObject;
-    public GameObject SmallMenuPanel;
+    public GameObject EndMenuPanel;
+    public EndScreen endScreen;
     public TextMeshProUGUI GameEndText;
     private CustomerPanel customerPanel;
     public TextMeshProUGUI HappinessText;
@@ -114,7 +115,8 @@ public class Game : MonoBehaviour
 
         await(Task.Delay(300)); //MenuPanel doesn't open without this wait
 
-        SmallMenuPanel.SetActive(true);
+        //EndMenuPanel.SetActive(true);
+        endScreen.TogglePanel();
         return;
     }
 }

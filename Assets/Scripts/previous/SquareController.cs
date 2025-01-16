@@ -33,6 +33,7 @@ public class SquareController : MonoBehaviour, IDropHandler, IPointerClickHandle
         {
             buildingTilePrefab = Resources.Load<GameObject>("BuildingTile");
         }
+        
 
         // Make sure the "FilledTile" tag exists
         // You'll need to manually add this tag in Unity's Tags & Layers settings

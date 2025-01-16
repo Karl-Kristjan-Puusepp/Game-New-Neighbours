@@ -10,6 +10,7 @@ public class SmallMenuPanel : MonoBehaviour
 {
     public Button ExitButton;
     public Button TitleButton;
+    
     private void Awake()
     {
         ExitButton.onClick.AddListener(Exit);
