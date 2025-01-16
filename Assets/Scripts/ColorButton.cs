@@ -38,7 +38,7 @@ public class ColorButton : MonoBehaviour
         foreach (Button wallButton in wallButtons)
         {
             Image wallImage = wallButton.GetComponent<Image>();
-            if (wallImage != null)
+            if (wallImage != null && wallImage.sprite.name != "DELETEHOUSE")
             {
                 wallImage.color = colorButtonImage.color;
             }
