@@ -18,7 +18,7 @@ MonoBehaviour:
   widthRequired: 3
   heightRequired: -1
   wallColorRequired: green
-  roofColorRequired: 
+  roofColorRequired: green
   locationRequired: 
   separateHouses: 0
   CustomerSprite: {fileID: 21300000, guid: 258d27098c965e74eaf6874a379812b8, type: 3}

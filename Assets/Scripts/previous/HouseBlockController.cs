@@ -88,6 +88,21 @@ public class HouseBlockController : MonoBehaviour, IBeginDragHandler, IDragHandl
             copyImage.color = originalImage.color;
         }
 
+        var copySpriteName = draggedCopy.GetComponent<Image>().sprite.name;
+
+        if (copySpriteName == "door")
+        {
+            var gridController = FindObjectOfType<HouseBuildingGridController>();
+            gridController.SetBottomRowInteractable();
+        }
+        if (copySpriteName == "Roof right" || copySpriteName == "RoofRight" || copySpriteName == "RoofCenter")
+        {
+            var gridController = FindObjectOfType<HouseBuildingGridController>();
+            gridController.SetTopRowInteractable();
+        }
+
+
+
         // Show the original as normal or partially transparent while dragging.
         canvasGroup.alpha = 1f;
     }
@@ -119,9 +134,11 @@ public class HouseBlockController : MonoBehaviour, IBeginDragHandler, IDragHandl
         {
             if (!wasDropped)
             {
+                var gridController = FindObjectOfType<HouseBuildingGridController>();
                 // If the copy was not successfully dropped, destroy it.
                 Debug.Log("[OnEndDrag] Drag ended without successful drop - destroying copy");
                 Destroy(draggedCopy);
+                gridController.SetSquaresBackToInteractable();
             }
             else
             {

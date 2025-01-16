@@ -7,7 +7,6 @@ using UnityEngine.Tilemaps;
 using System.Threading.Tasks;
 using static Reporter;
 using TMPro;
-using Unity.VisualScripting;
 
 public class HouseBuildingGridController : MonoBehaviour
 {
@@ -19,6 +18,9 @@ public class HouseBuildingGridController : MonoBehaviour
     public TextMeshProUGUI HappyText;
     public Sprite empty;
     public static HouseBuildingGridController Instance { get; private set; }
+
+    private Dictionary<string, string> colorDictionary;
+
 
 
     private Dictionary<SquareController, bool> interactableStates = new Dictionary<SquareController, bool>();
@@ -37,6 +39,21 @@ public class HouseBuildingGridController : MonoBehaviour
 
         InitializeGrid();
         gameObject.SetActive(true);
+    }
+
+    private void Start()
+    {
+        colorDictionary = new Dictionary<string, string>
+        {
+            { "white", "#F1F1F1" },
+            { "red", "#D65454" },
+            { "yellow", "#FFD464" },
+            { "green", "#34B467" },
+            { "blue", "#519BEC" },
+            { "pink", "#E784D3" },
+            { "black", "#2C252A" }
+
+        };
     }
 
     private void OnEnable()
@@ -177,13 +194,23 @@ public class HouseBuildingGridController : MonoBehaviour
             {
 
 
-                if (gridSquares[customerData.heightRequired - 1, col].squareImage.sprite.name != "BuildingTileEmpty")
+                if (gridSquares[4-customerData.heightRequired, col].squareImage.sprite.name != "BuildingTileEmpty")
                 {
                     heightFulfilled = true;
                 }
             }
             if (heightFulfilled) requirementsSatisfied++;
 
+            requirementsTotal++;
+        }
+        if (customerData.roofColorRequired != "")
+        {
+            requirementsSatisfied += CheckRoofColor(customerData.roofColorRequired);
+            requirementsTotal++;
+        }
+        if (customerData.wallColorRequired != "")
+        {
+            requirementsSatisfied += CheckWallColor(customerData.wallColorRequired);
             requirementsTotal++;
         }
 
@@ -212,6 +239,67 @@ public class HouseBuildingGridController : MonoBehaviour
         SceneData.customersTotal += 1;
 
 
+    }
+
+    private double CheckRoofColor(String customerColor)
+    {
+        for (int col = 0; col < 3; col++)
+        {
+            for (int row = 0; row < 4; row++)
+            {
+                if (gridSquares[row, col].squareImage.sprite.name == "Roof right" || gridSquares[row, col].squareImage.sprite.name == "RoofRight" || gridSquares[row, col].squareImage.sprite.name == "RoofCenter")
+                {
+                    Color color = gridSquares[row, col].squareImage.color;
+
+                    
+
+                    if (ColorUtility.TryParseHtmlString(colorDictionary[customerColor], out Color hexColor))
+                    {
+                        
+                        double colortotal = color.r + color.g + color.b;
+                        double colorhex = hexColor.r + hexColor.g + hexColor.b;
+                        double vahe = Math.Abs(colortotal - colorhex);
+                        Debug.Log($"{vahe} {colorhex} {colortotal}");
+                        // Check if the colors are equal
+                        if (vahe < 0.01 && vahe >= 0.0)
+                        {
+                            return 1.0;
+                        }
+                    }
+                }
+            }
+        }
+        return 0.0;
+    }
+
+    private double CheckWallColor(String customerColor)
+    {
+        for (int col = 0; col < 3; col++)
+        {
+            for (int row = 0; row < 4; row++)
+            {
+                String spritename = gridSquares[row, col].squareImage.sprite.name;
+                if (spritename != "Roof right" && spritename != "RoofRight" && spritename != "RoofCenter" && spritename != "BuildingTileEmpty")
+                {
+                    Color color = gridSquares[row, col].squareImage.color;
+
+
+                    if (ColorUtility.TryParseHtmlString(colorDictionary[customerColor], out Color hexColor))
+                    {
+                        double colortotal = color.r + color.g + color.b;
+                        double colorhex = hexColor.r + hexColor.g + hexColor.b;
+                        double vahe = Math.Abs(colortotal - colorhex);
+                        Debug.Log($"{vahe} {colorhex} {colortotal}");
+                        // Check if the colors are equal
+                        if (vahe < 0.01 && vahe >= 0.0)
+                        {
+                            return 1.0;
+                        }
+                    }
+                }
+            }
+        }
+        return 0.0;
     }
 
     public void EraseHouse()
