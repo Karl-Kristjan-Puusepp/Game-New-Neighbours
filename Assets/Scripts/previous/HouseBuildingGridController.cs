@@ -213,6 +213,29 @@ public class HouseBuildingGridController : MonoBehaviour
             requirementsSatisfied += CheckWallColor(customerData.wallColorRequired);
             requirementsTotal++;
         }
+        if (customerData.locationRequired != "")
+        {
+            if (customerData.locationRequired == "tree")
+            {
+                if (ActiveLot.forest) requirementsSatisfied++;
+                requirementsTotal++;
+            }
+            if (customerData.locationRequired == "water")
+            {
+                if (ActiveLot.water) requirementsSatisfied++;
+                requirementsTotal++;
+            }
+            if (customerData.locationRequired == "center")
+            {
+                if (ActiveLot.center) requirementsSatisfied++;
+                requirementsTotal++;
+            }
+        }
+        if (customerData.separateHouses)
+        {
+            if (gridSquares[3, 1].squareImage.sprite.name == "BuildingTileEmpty" && gridSquares[3, 0].squareImage.sprite.name != "BuildingTileEmpty" && gridSquares[3, 2].squareImage.sprite.name != "BuildingTileEmpty") requirementsSatisfied++;
+            requirementsTotal++;
+        }
 
 
         double requirementspercentage = requirementsSatisfied / requirementsTotal;

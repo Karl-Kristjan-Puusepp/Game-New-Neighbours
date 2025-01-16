@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class LotHouseAssigner 
 {
-    public static House[,] houses = new House[3, 4];
+    public static House[,] houses = new House[4, 4];
     
     public static void SetHouse(int row, int col, House house) {
         if (row == -1 || col == -1) return;
