@@ -24,7 +24,12 @@ public class Game : MonoBehaviour
 
     public List<CustomerData> HappyCustomers;
 
+    public GameObject Villagers;
+    public GameObject PartyVillagers;
+    public GameObject HappyParty;
+
     public static List<string> happySpriteNames = new List<string>();
+    public static List<string> villageSpriteNames = new List<string>();
 
     private CustomerData currentCustomer;
     private static int currentCustomerID = 0;
@@ -52,6 +57,9 @@ public class Game : MonoBehaviour
         }
         newCustomer.onClick.AddListener(NextCustomer);
         CustomerPanelObject.SetActive(false);
+        PartyVillagers.SetActive(false);
+        HappyParty.SetActive(false);
+        ShowVillagers();
         
     }
     private void Start()
@@ -110,6 +118,56 @@ public class Game : MonoBehaviour
             happySpriteNames.Add(customerName);
         }
     }
+    public static void AddCustomer(string customerName)
+    {
+        if (!villageSpriteNames.Contains(customerName))
+        {
+            villageSpriteNames.Add(customerName);
+        }
+    }
+
+    private void ShowVillagers()
+    {
+        foreach (Transform child in Villagers.transform)
+        {
+            SpriteRenderer childSprite = child.GetComponent<SpriteRenderer>();
+
+            if (childSprite.sprite != null && villageSpriteNames.Contains(childSprite.sprite.name))
+            {
+                // Enable the image if its sprite name is allowed
+                childSprite.enabled = true;
+            }
+            else
+            {
+                // Disable the image if not allowed
+                childSprite.enabled = false;
+            }
+        }
+        
+    }
+
+    private void ShowHappyVillagers()
+    {
+        Villagers.SetActive(false);
+        PartyVillagers.SetActive(true);
+
+        foreach (Transform child in PartyVillagers.transform)
+        {
+            SpriteRenderer childSprite = child.GetComponent<SpriteRenderer>();
+
+            if (childSprite!= null && happySpriteNames.Contains(childSprite.sprite.name))
+            {
+                // Enable the image if its sprite name is allowed
+                childSprite.enabled = true;
+            }
+            else
+            {
+                // Disable the image if not allowed
+                childSprite.enabled = false;
+            }
+        }
+    }
+
 
     private async void EndGame()
     {
@@ -121,8 +179,11 @@ public class Game : MonoBehaviour
         else if (happinessPercentage >= 25) gameEndString += "The townsfolk are somewhat disappointed with your work";
         else gameEndString += "The townsfolk are very displeased with their new properties.";
         GameEndText.text = gameEndString;
-        Party.FilterImages();
+        //Party.FilterImages();
+        ShowHappyVillagers();
 
+        if (happinessPercentage >= 50)  HappyParty.SetActive(true);
+        
         await(Task.Delay(300)); //MenuPanel doesn't open without this wait
 
         SmallMenuPanel.SetActive(true);

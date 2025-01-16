@@ -20,6 +20,9 @@ public class LotController : MonoBehaviour
     public int col;
 
     public bool hasHouse = false;
+    public bool nextToWater = false;
+    public bool nextToForest = false;
+    public bool inTheCenter = false;
 
     private void Awake()
     {
