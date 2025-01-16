@@ -4923,6 +4923,14 @@ PrefabInstance:
       propertyPath: m_text
       value: NO
       objectReference: {fileID: 0}
+    - target: {fileID: 498481534679652922, guid: 5adfb4eef29bf3d4b8303291118d0997, type: 3}
+      propertyPath: m_fontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 498481534679652922, guid: 5adfb4eef29bf3d4b8303291118d0997, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 718708063975422573, guid: 5adfb4eef29bf3d4b8303291118d0997, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -5979,9 +5987,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc48ab86e3606b64ca07529b3bd1b414, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wasDropped: 0
   isDoor: 0
   windows: 0
-  wasDropped: 0
 --- !u!1001 &1979233121
 PrefabInstance:
   m_ObjectHideFlags: 0

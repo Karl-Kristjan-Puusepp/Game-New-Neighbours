@@ -24,6 +24,8 @@ public class Game : MonoBehaviour
 
     public List<CustomerData> HappyCustomers;
 
+    public static List<string> happySpriteNames = new List<string>();
+
     private CustomerData currentCustomer;
     private static int currentCustomerID = 0;
 
@@ -101,6 +103,14 @@ public class Game : MonoBehaviour
         
     }
 
+    public static void AddHappyCustomer(string customerName)
+    {
+        if (!happySpriteNames.Contains(customerName))
+        {
+            happySpriteNames.Add(customerName);
+        }
+    }
+
     private async void EndGame()
     {
         double happinessPercentage = Math.Round((SceneData.happyCustomers * 100) / SceneData.customersTotal, 2);
@@ -111,6 +121,7 @@ public class Game : MonoBehaviour
         else if (happinessPercentage >= 25) gameEndString += "The townsfolk are somewhat disappointed with your work";
         else gameEndString += "The townsfolk are very displeased with their new properties.";
         GameEndText.text = gameEndString;
+        Party.FilterImages();
 
         await(Task.Delay(300)); //MenuPanel doesn't open without this wait
 
