@@ -70,7 +70,7 @@ public class HouseBlockController : MonoBehaviour, IBeginDragHandler, IDragHandl
         draggedRectTransform.pivot = rectTransform.pivot;
 
         // 5) Position the copy under the mouse.
-        draggedRectTransform.anchoredPosition = mousePosCanvas - localClickOffset + new Vector2(440, -250);
+        draggedRectTransform.anchoredPosition = mousePosCanvas - localClickOffset; //+ new Vector2(440, -250);
 
         // 6) Configure the copy's CanvasGroup.
         var draggedCanvasGroup = draggedCopy.GetComponent<CanvasGroup>();

@@ -34,7 +34,7 @@ public class Game : MonoBehaviour
     public static List<string> villageSpriteNames = new List<string>();
 
     private CustomerData currentCustomer;
-    private static int currentCustomerID = 0;
+    public static int currentCustomerID = 0;
 
     private void Awake()
     {
@@ -78,7 +78,7 @@ public class Game : MonoBehaviour
         if (currentCustomerID < Customers.Count) {
             newCustomer.interactable = false;
             currentCustomer = Customers[currentCustomerID];
-            currentCustomerID++;
+            //currentCustomerID++;
             CustomerPanelObject.SetActive(true);
             customerPanel.SetCustomerData(currentCustomer);
 

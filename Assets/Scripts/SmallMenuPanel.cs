@@ -17,6 +17,7 @@ public class SmallMenuPanel : MonoBehaviour
     }
     public void ToTitleScreen()
     {
+        Debug.Log("you have clickad on da title");
         SceneManager.LoadScene("Title");
     }
 
