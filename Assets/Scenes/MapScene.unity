@@ -158,7 +158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -362, y: 231.15}
+  m_AnchoredPosition: {x: -362.00003, y: 231.15}
   m_SizeDelta: {x: -795.1517, y: -495.2124}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &132624323
@@ -2060,6 +2060,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 335901280}
+  - component: {fileID: 335901281}
   m_Layer: 0
   m_Name: Villagers
   m_TagString: Untagged
@@ -2096,6 +2097,27 @@ Transform:
   - {fileID: 1638463816}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &335901281
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 335901279}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5a78026b346c7ea409d4bd85ad1edc9d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &405758167
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3341,7 +3363,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 6.68, y: 1.14, z: 0}
   m_LocalScale: {x: 0.17, y: 0.17, z: 0.17}
-  m_ConstrainProportionsScale: 1
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 774668338}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3930,6 +3952,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 644152607}
+  - component: {fileID: 644152608}
   m_Layer: 0
   m_Name: GoodParty
   m_TagString: Untagged
@@ -3960,6 +3983,27 @@ Transform:
   - {fileID: 1831196852}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &644152608
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 644152606}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 46803f0192c909c4bbc5223ceb7035e8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &653534735
 GameObject:
   m_ObjectHideFlags: 0
@@ -5381,6 +5425,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 774668338}
+  - component: {fileID: 774668339}
   m_Layer: 0
   m_Name: Partyy
   m_TagString: Untagged
@@ -5401,11 +5446,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 580565819}
   - {fileID: 984445413}
   - {fileID: 1174720654}
   - {fileID: 255600075}
   - {fileID: 928629096}
-  - {fileID: 580565819}
   - {fileID: 681323942}
   - {fileID: 736262138}
   - {fileID: 689408055}
@@ -5417,6 +5462,27 @@ Transform:
   - {fileID: 1466871377}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &774668339
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774668337}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dbb16181dc3711245a9912903290e662, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &785274544
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12319,7 +12385,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 5.04, y: -2.31, z: 0}
   m_LocalScale: {x: 0.06, y: 0.06, z: 0.06}
-  m_ConstrainProportionsScale: 1
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 774668338}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
