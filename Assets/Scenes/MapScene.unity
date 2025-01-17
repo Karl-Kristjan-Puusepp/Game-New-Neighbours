@@ -11810,7 +11810,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   newCustomer: {fileID: 1004203195}
-  Customers: []
+  Customers:
+  - {fileID: 11400000, guid: 0f9241d3b80e65246bc75fa9ae4277ec, type: 2}
   AllLots: {fileID: 1028118163}
   CustomerPanelObject: {fileID: 1003134812}
   EndMenuPanel: {fileID: 0}
