@@ -215,6 +215,8 @@ public class HouseBuildingGridController : MonoBehaviour
         }
         if (customerData.locationRequired != "")
         {
+            Debug.Log(customerData.locationRequired);
+            Debug.Log(ActiveLot.forest);
             if (customerData.locationRequired == "tree")
             {
                 if (ActiveLot.forest) requirementsSatisfied++;
@@ -237,7 +239,6 @@ public class HouseBuildingGridController : MonoBehaviour
             requirementsTotal++;
         }
 
-        if (requirementsSatisfied == 0) requirementsSatisfied = 1;
         if (requirementsTotal == 0) requirementsTotal = 1;
 
         double requirementspercentage = requirementsSatisfied / requirementsTotal;

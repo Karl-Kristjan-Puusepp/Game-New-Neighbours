@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class EndScreen : MonoBehaviour
 {
     public Button TitleButton;
+    public Button CloseButton;
     public GameObject mainPanel;
     public GameObject menuPanel;
     private bool isPanelOpen = false;
@@ -15,6 +16,7 @@ public class EndScreen : MonoBehaviour
     void Start()
     {
         TitleButton.onClick.AddListener(ToTitleScreen);
+        CloseButton.onClick.AddListener(ClosePanel);
         if (mainPanel != null)
         {
             mainPanel.SetActive(false);
@@ -40,6 +42,7 @@ public class EndScreen : MonoBehaviour
     void Update()
     {
 
+        /*
         if (isPanelOpen && Input.GetMouseButtonDown(0))
         {
             if (!IsPointerOverUIElement(menuPanel, TitleButton))
@@ -47,6 +50,7 @@ public class EndScreen : MonoBehaviour
                 ClosePanel();
             }
         }
+        */
     }
 
     private void ClosePanel()
