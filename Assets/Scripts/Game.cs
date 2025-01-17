@@ -67,10 +67,17 @@ public class Game : MonoBehaviour
     }
     private void Start()
     {
-        if (currentCustomerID == 0)
+        if (currentCustomerID == 0) 
+        {
             Tutorial.ShowText("Click to meet your first customer");
+            Tutorial.ShowNool(1);
+        }
         else 
+        {
             Tutorial.ShowText("");
+            Tutorial.ShowNool(0);
+        } 
+        
         if (currentCustomerID == Customers.Count)
         {
             ButtonText.text = "See results";
@@ -88,10 +95,15 @@ public class Game : MonoBehaviour
             customerPanel.SetCustomerData(currentCustomer);
             currentCustomer.id = currentCustomerID;
 
-            if (currentCustomerID == 1) // TODO: MAKE 0. ?????????????????????????????
+            if (currentCustomerID == 1){
                 Tutorial.ShowText("Choose a lot next to the woods");
-            else
+                Tutorial.ShowNool(2);
+            } // TODO: MAKE 0. ?????????????????????????????
+            else 
+            {
                 Tutorial.ShowText("");
+                Tutorial.ShowNool(0);
+            }
 
             SceneData.CurrentCustomerStatic = currentCustomer;
 

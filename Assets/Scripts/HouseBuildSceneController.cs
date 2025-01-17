@@ -18,10 +18,12 @@ public class HouseBuildSceneController : MonoBehaviour
         if (SceneData.CurrentCustomerStatic.id == 1)
         {
             Tutorial.ShowText("Drag and drop tiles to build a house. Click on the available colors to change tile color.");
+            Tutorial.ShowNool(0);
         }
         else 
         {
             Tutorial.ShowText("");
+            Tutorial.ShowNool(0);
         }
         
     }
