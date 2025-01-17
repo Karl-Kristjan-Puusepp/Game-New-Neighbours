@@ -4,32 +4,27 @@ using UnityEngine;
 
 public class RandomRequirements : MonoBehaviour
 {
-    private string RequirementText;
-    private int windowsRequired = -1;
-    private int doorsRequired = -1;
-    private int widthRequired = -1;
-    private int heightRequired = -1;
-    private string wallColorRequired = "";
-    private string roofColorRequired = "";
-    private string locationRequired = "";
-    private bool separateHouses = false;
+    private static string RequirementText;
+    private static int windowsRequired = -1;
+    private static int doorsRequired = -1;
+    private static int widthRequired = -1;
+    private static int heightRequired = -1;
+    private static string wallColorRequired = "";
+    private static string roofColorRequired = "";
+    private static string locationRequired = "";
+    private static bool separateHouses = false;
 
-    private string[] wallColors = { "red", "blue", "green", "yellow", "white" , "pink", "black"};
-    private string[] roofColors = { "red", "blue", "green", "yellow", "white", "pink", "black" };
-    private string[] locations = { "tree", "water", "center" };
+    private static string[] wallColors = { "red", "blue", "green", "yellow", "white" , "pink", "black"};
+    private static string[] roofColors = { "red", "blue", "green", "yellow", "white", "pink", "black" };
+    private static string[] locations = { "tree", "water", "center" };
 
-    private List<string> selectedRequirements = new List<string>();
-    private string[] separateTexts;
+    private static List<string> selectedRequirements = new List<string>();
+    private static string[] separateTexts;
 
-    void Start()
+
+    public static void GenerateRandomRequirements(int customerID)
     {
-        GenerateRandomRequirements();
-        
-        
-    }
-
-    private void GenerateRandomRequirements()
-    {
+        RequirementText = "";
         // Possible requirements
         string[] allRequirements = { "Windows", "Doors", "Width", "Height", "WallColor", "RoofColor", "Location", "SeparateHouses" };
 
@@ -107,15 +102,15 @@ public class RandomRequirements : MonoBehaviour
                 case "SeparateHouses":
                     separateHouses = true; // Random boolean
                     separateTexts = new string[] { "I want two houses on the same lot!", "My family would prefer two separate houses", "I cannot stand my wife, build us separate houses!" };
-                    RequirementText += separateTexts[Random.Range(0, allRequirements.Length)];
+                    RequirementText += separateTexts[Random.Range(0, separateTexts.Length)];
 
                     break;
             }
         }
-        AssignToCustomer();
+        AssignToCustomer(customerID);
     }
 
-    private void AssignToCustomer()
+    public static void AssignToCustomer(int customerID)
     {
         CustomerData customer = SceneData.CurrentCustomerStatic;
         customer.requirementText = RequirementText;
@@ -128,6 +123,7 @@ public class RandomRequirements : MonoBehaviour
         customer.separateHouses = separateHouses;
         customer.roofColorRequired = roofColorRequired;
         customer.wallColorRequired = wallColorRequired;
+        customer.id = customerID;
 
         SceneData.CurrentCustomerStatic = customer;
     }

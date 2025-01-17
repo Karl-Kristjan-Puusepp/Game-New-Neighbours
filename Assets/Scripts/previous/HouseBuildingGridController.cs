@@ -342,6 +342,7 @@ public class HouseBuildingGridController : MonoBehaviour
                 {
                     // Set the sprite to the empty sprite
                     square.squareImage.sprite = empty;
+                    square.squareImage.color = new Color(1f, 1f, 1f, 1f);
                     Button squareButton = square.squareButton;
                     if (squareButton != null)
                     {

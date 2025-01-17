@@ -30,6 +30,9 @@ public class Game : MonoBehaviour
     public GameObject HappyParty;
     public GameObject Confetti;
 
+    public static bool randomRequirements=false;
+    public static int randomCounter = 0;
+
     public TutorialController Tutorial;
 
     public static List<string> happySpriteNames = new List<string>();
@@ -88,15 +91,27 @@ public class Game : MonoBehaviour
     private void NextCustomer()
     {
         
-        if (currentCustomerID < Customers.Count) {
+        if (currentCustomerID < Customers.Count && randomCounter < Customers.Count) {
             newCustomer.interactable = false;
-            currentCustomer = Customers[currentCustomerID];
+
+            if (randomRequirements)
+            {   randomCounter = 0;
+                currentCustomer = Customers[UnityEngine.Random.Range(0, Customers.Count)];
+                SceneData.CurrentCustomerStatic = currentCustomer;
+                RandomRequirements.GenerateRandomRequirements(randomCounter);
+                
+            }
+            else {
+                currentCustomer = Customers[currentCustomerID];
+                SceneData.CurrentCustomerStatic = currentCustomer;
+            }
+            
             //currentCustomerID++;
             CustomerPanelObject.SetActive(true);
             customerPanel.SetCustomerData(currentCustomer);
             currentCustomer.id = currentCustomerID;
 
-            if (currentCustomerID == 0){
+            if (currentCustomerID == 0 && !randomRequirements){
                 Tutorial.ShowText("Choose a lot next to the woods");
                 Tutorial.ShowNool(2);
             } 
@@ -106,7 +121,7 @@ public class Game : MonoBehaviour
                 Tutorial.ShowNool(0);
             }
 
-            SceneData.CurrentCustomerStatic = currentCustomer;
+            
 
             int count = 0;
             foreach (Transform child in AllLots.transform)
