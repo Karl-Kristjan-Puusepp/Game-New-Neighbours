@@ -598,7 +598,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 892797526043399997, guid: 9549ab9b63bdc894b8e89f76aa02f3c9, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -17.935
+      value: -17.934998
       objectReference: {fileID: 0}
     - target: {fileID: 892797526043399997, guid: 9549ab9b63bdc894b8e89f76aa02f3c9, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -6277,7 +6277,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 319.79, y: -95.008}
+  m_AnchoredPosition: {x: 319.79, y: -95.007996}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &846717889
@@ -7321,7 +7321,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0, y: -12.8022}
+  m_AnchoredPosition: {x: 0, y: -12.8022}
   m_SizeDelta: {x: 778.5164, y: 368.8461}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1031786555
@@ -8839,7 +8839,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -71.39174, y: -0.000000059605}
+  m_AnchoredPosition: {x: -71.391754, y: -0.000000059605}
   m_SizeDelta: {x: 123.4196, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1395274827
@@ -9130,7 +9130,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 38.1, y: -0.2145}
+  m_AnchoredPosition: {x: 38.100006, y: -0.2145}
   m_SizeDelta: {x: 52.7672, y: 50.429}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1562493483
@@ -9948,6 +9948,7 @@ GameObject:
   - component: {fileID: 1648664756}
   - component: {fileID: 1648664755}
   - component: {fileID: 1648664754}
+  - component: {fileID: 1648664757}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -10029,6 +10030,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1648664757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1648664753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 105d031f33dd328429eebfa5ac722993, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  matteColor: {r: 0.8431373, g: 0.45882356, b: 0.60784316, a: 1}
+  referenceMode: 0
+  x: 16
+  y: 9
+  width: 1920
+  height: 1080
+  onAwake: 1
+  onUpdate: 1
 --- !u!1001 &1666914158
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10521,7 +10542,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3426040316541575981, guid: 945efec503acca44fbefbda3b9a37594, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -141.33084
+      value: -141.33081
       objectReference: {fileID: 0}
     - target: {fileID: 3426040316541575981, guid: 945efec503acca44fbefbda3b9a37594, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -12084,8 +12105,8 @@ Canvas:
   m_GameObject: {fileID: 1827946517}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 1648664755}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -12096,7 +12117,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!224 &1827946521
 RectTransform:
@@ -12174,6 +12195,7 @@ MonoBehaviour:
   Villagers: {fileID: 335901279}
   PartyVillagers: {fileID: 774668337}
   HappyParty: {fileID: 644152606}
+  Confetti: {fileID: 0}
   Tutorial: {fileID: 1122642578}
 --- !u!1 &1831196851
 GameObject:

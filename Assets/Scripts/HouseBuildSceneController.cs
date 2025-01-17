@@ -15,7 +15,7 @@ public class HouseBuildSceneController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (SceneData.CurrentCustomerStatic.id == 1)
+        if (SceneData.CurrentCustomerStatic.id == 0)
         {
             Tutorial.ShowText("Drag and drop tiles to build a house. Click on the available colors to change tile color.");
             Tutorial.ShowNool(0);

@@ -50,7 +50,7 @@ public class DeleteHouseButton : MonoBehaviour
 
     void Update()
     {
-
+        /*
         if (isPanelOpen && Input.GetMouseButtonDown(0))
         {
             if (!IsPointerOverUIElement(warningPanelPanel))
@@ -58,6 +58,7 @@ public class DeleteHouseButton : MonoBehaviour
                 ClosePanel();
             }
         }
+        */
     }
 
     private void ClosePanel()

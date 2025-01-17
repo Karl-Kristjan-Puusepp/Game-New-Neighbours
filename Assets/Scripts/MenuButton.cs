@@ -31,7 +31,7 @@ public class MenuButton : MonoBehaviour
 
     void Update()
     {
-        
+        /**
         if (isPanelOpen && Input.GetMouseButtonDown(0))
         {
             if (!IsPointerOverUIElement(menuPanel))
@@ -39,6 +39,7 @@ public class MenuButton : MonoBehaviour
                 ClosePanel();
             }
         }
+        **/
     }
 
     private void ClosePanel()

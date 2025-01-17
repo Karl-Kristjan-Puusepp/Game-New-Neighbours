@@ -96,10 +96,10 @@ public class Game : MonoBehaviour
             customerPanel.SetCustomerData(currentCustomer);
             currentCustomer.id = currentCustomerID;
 
-            if (currentCustomerID == 1){
+            if (currentCustomerID == 0){
                 Tutorial.ShowText("Choose a lot next to the woods");
                 Tutorial.ShowNool(2);
-            } // TODO: MAKE 0. ?????????????????????????????
+            } 
             else 
             {
                 Tutorial.ShowText("");
