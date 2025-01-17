@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Mouse
   m_EditorClassIdentifier: 
   requirementText: Make me a yellow house with 3 windows!! I will live in cheese!!!!
-  windowsRequired: 4
+  windowsRequired: 3
   doorsRequired: -1
   widthRequired: -1
   heightRequired: -1
