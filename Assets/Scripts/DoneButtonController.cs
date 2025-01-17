@@ -20,7 +20,8 @@ public class DoneButtonController : MonoBehaviour
         if(grid.doorInt > 0) {
             grid.SaveAsActiveHouse();
             TogglePanel();
-            Game.currentCustomerID++;
+            if (Game.randomRequirements) Game.randomCounter++;
+            else Game.currentCustomerID++;
             
         }
         else

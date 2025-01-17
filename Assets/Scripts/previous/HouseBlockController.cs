@@ -17,6 +17,7 @@ public class HouseBlockController : MonoBehaviour, IBeginDragHandler, IDragHandl
 
     public bool isDoor;
     public int windows = 0;
+    private bool isDragging = false;
 
     private void Awake()
     {
@@ -33,8 +34,12 @@ public class HouseBlockController : MonoBehaviour, IBeginDragHandler, IDragHandl
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if (isDragging)
+            return;
+
         wasDropped = false;
 
+        isDragging = true;
         // Instantiate the dragged copy as a child of the canvas.
         draggedCopy = Instantiate(gameObject, canvas.transform);
         HouseBlockController copyController = draggedCopy.GetComponent<HouseBlockController>();
@@ -106,7 +111,7 @@ public class HouseBlockController : MonoBehaviour, IBeginDragHandler, IDragHandl
     {
         // Reset the original block's CanvasGroup.
         canvasGroup.alpha = 1f;
-
+        isDragging = false;
         if (draggedCopy != null)
         {
             if (!wasDropped)

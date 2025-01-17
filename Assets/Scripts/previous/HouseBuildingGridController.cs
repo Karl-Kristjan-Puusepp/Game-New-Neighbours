@@ -238,7 +238,7 @@ public class HouseBuildingGridController : MonoBehaviour
             if (gridSquares[3, 1].squareImage.sprite.name == "BuildingTileEmpty" && gridSquares[3, 0].squareImage.sprite.name != "BuildingTileEmpty" && gridSquares[3, 2].squareImage.sprite.name != "BuildingTileEmpty") requirementsSatisfied++;
             requirementsTotal++;
         }
-
+        if (customerData.CustomerName == "Bohumil") requirementsSatisfied = 1;
         if (requirementsTotal == 0) requirementsTotal = 1;
 
         double requirementspercentage = requirementsSatisfied / requirementsTotal;
@@ -342,6 +342,7 @@ public class HouseBuildingGridController : MonoBehaviour
                 {
                     // Set the sprite to the empty sprite
                     square.squareImage.sprite = empty;
+                    square.squareImage.color = new Color(1f, 1f, 1f, 1f);
                     Button squareButton = square.squareButton;
                     if (squareButton != null)
                     {
