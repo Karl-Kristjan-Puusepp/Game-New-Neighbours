@@ -237,9 +237,10 @@ public class HouseBuildingGridController : MonoBehaviour
             requirementsTotal++;
         }
 
+        if (requirementsSatisfied == 0) requirementsSatisfied = 1;
+        if (requirementsTotal == 0) requirementsTotal = 1;
 
         double requirementspercentage = requirementsSatisfied / requirementsTotal;
-        if (requirementsTotal == 0.0) requirementspercentage = 1.0;
 
         if (requirementspercentage == 1.0)
         {
@@ -257,6 +258,8 @@ public class HouseBuildingGridController : MonoBehaviour
             SceneData.happyCustomers += Math.Round(requirementspercentage, 2);
             if (requirementspercentage >= 0.5) Game.AddHappyCustomer(customerData.CustomerName.ToLower());
         }
+
+        HappyText.text += $"\nYou fulfilled {requirementsSatisfied} out of {requirementsTotal} requirements.";
 
         Game.AddCustomer(customerData.CustomerName.ToLower());
 
