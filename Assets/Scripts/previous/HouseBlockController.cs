@@ -31,50 +31,26 @@ public class HouseBlockController : MonoBehaviour, IBeginDragHandler, IDragHandl
             canvasGroup = gameObject.AddComponent<CanvasGroup>();
         }
     }
-
     public void OnBeginDrag(PointerEventData eventData)
     {
         wasDropped = false;
 
-        // 1) Convert mouse point to Canvas space.
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(
-            canvas.transform as RectTransform,
-            eventData.position,
-            eventData.pressEventCamera,
-            out Vector2 mousePosCanvas
-        );
-
-        // 2) Convert this object's pivot position (in world space) to Canvas space.
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(
-            canvas.transform as RectTransform,
-            rectTransform.position,
-            eventData.pressEventCamera,
-            out Vector2 objectPosCanvas
-        );
-
-        // 3) Compute the offset between the mouse click and the object's pivot.
-        localClickOffset = mousePosCanvas - objectPosCanvas;
-
-        // 4) Instantiate the dragged copy as a child of the canvas.
+        // Instantiate the dragged copy as a child of the canvas.
         draggedCopy = Instantiate(gameObject, canvas.transform);
         HouseBlockController copyController = draggedCopy.GetComponent<HouseBlockController>();
 
         // Disable the copy's drag logic so it doesn't interfere.
         if (copyController != null) copyController.enabled = false;
 
-        // Keep anchor/pivot/size.
+        // Keep anchor/pivot/size consistent.
         RectTransform draggedRectTransform = draggedCopy.GetComponent<RectTransform>();
         draggedRectTransform.sizeDelta = rectTransform.sizeDelta;
         draggedRectTransform.anchorMin = rectTransform.anchorMin;
         draggedRectTransform.anchorMax = rectTransform.anchorMax;
         draggedRectTransform.pivot = rectTransform.pivot;
 
-        // 5) Position the copy under the mouse.
-        draggedRectTransform.anchoredPosition = mousePosCanvas - localClickOffset; //+ new Vector2(440, -250);
-
-        // 6) Configure the copy's CanvasGroup.
+        // Configure the copy's CanvasGroup.
         var draggedCanvasGroup = draggedCopy.GetComponent<CanvasGroup>();
-        if (draggedCanvasGroup == null)
         if (draggedCanvasGroup == null)
             draggedCanvasGroup = draggedCopy.AddComponent<CanvasGroup>();
 
@@ -102,31 +78,28 @@ public class HouseBlockController : MonoBehaviour, IBeginDragHandler, IDragHandl
             gridController.SetTopRowInteractable();
         }
 
-
-
-        // Show the original as normal or partially transparent while dragging.
-        canvasGroup.alpha = 1f;
+        // Set the dragged copy position to the mouse position.
+        UpdateDragPosition(eventData);
     }
 
     public void OnDrag(PointerEventData eventData)
     {
         if (draggedCopy == null) return;
 
-        RectTransform draggedRectTransform = draggedCopy.GetComponent<RectTransform>();
+        // Update the dragged copy position to follow the mouse.
+        UpdateDragPosition(eventData);
+    }
 
-        /*
-        // Convert mouse position to canvas space on each frame.
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+    private void UpdateDragPosition(PointerEventData eventData)
+    {
+        // Use the world position to directly position the dragged copy under the mouse.
+        RectTransformUtility.ScreenPointToWorldPointInRectangle(
             canvas.transform as RectTransform,
             eventData.position,
             eventData.pressEventCamera,
-            out Vector2 mousePosCanvas
+            out Vector3 worldPos
         );
-
-        // Keep the click offset so the block stays under the cursor.
-        draggedRectTransform.anchoredPosition = mousePosCanvas - localClickOffset + new Vector2(440, -250);
-        */
-        draggedRectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+        draggedCopy.transform.position = worldPos;
     }
 
     public void OnEndDrag(PointerEventData eventData)

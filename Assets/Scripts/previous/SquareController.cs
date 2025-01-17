@@ -8,7 +8,7 @@ public class SquareController : MonoBehaviour, IDropHandler, IPointerClickHandle
     public Image squareImage;
     public Button squareButton;
     private const string FILLED_TAG = "FilledTile";  // Define the tag as a constant
-    private bool IsDoor;
+    //private bool IsDoor;
 
     [SerializeField]
     public GameObject buildingTilePrefab;
@@ -60,14 +60,7 @@ public class SquareController : MonoBehaviour, IDropHandler, IPointerClickHandle
 
         if (droppedObject != null)
         {
-            if (originalController.isDoor)
-            {
-                IsDoor = true;
-            }
-            else
-            {
-                IsDoor = false;
-            }
+            
             Image draggedImage = droppedObject.GetComponent<Image>();
             Debug.Log($"Dragged image component: {draggedImage != null}");
             

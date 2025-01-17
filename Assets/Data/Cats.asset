@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 902e98d70f0175141ae82fb01687d669, type: 3}
   m_Name: Cats
   m_EditorClassIdentifier: 
-  requirementText: We want two separate buildings because we cannot stand each other....
+  requirementText: We want two separate buildings because we cannot stand each other....AND
+    A DOOR FOR EACH HOUSE
   windowsRequired: -1
   doorsRequired: 2
   widthRequired: -1
@@ -24,3 +25,4 @@ MonoBehaviour:
   CustomerSprite: {fileID: 21300000, guid: 0a347be6abb09a9428d91f94090b98e9, type: 3}
   CustomerNoise: {fileID: 8300000, guid: 9d7d585229a31fd4ea8c01e8b6f0c0d6, type: 3}
   CustomerName: Cat family
+  id: 0
