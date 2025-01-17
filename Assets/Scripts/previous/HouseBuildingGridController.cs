@@ -407,35 +407,40 @@ public class HouseBuildingGridController : MonoBehaviour
     {
         for (int col = 0; col < gridSquares.GetLength(1); col++)
         {
-            bool foundTopInteractable = false;
-
+            
+            int interactableCount = 0;
+            
             for (int row = 0; row < gridSquares.GetLength(0); row++)
             {
+
                 var square = gridSquares[row, col];
-                if (square != null)
+                if (square == null) continue;
+
+                var button = square.GetComponent<Button>();
+                if (button == null) continue;
+
+                Debug.Log(square.squareImage.sprite.name + " row " + row + " col " + col);
+                if (interactableCount < 2 && button.interactable )
                 {
-                    var button = square.GetComponent<Button>();
+                    
+                    // Allow top two interactable squares
+                    interactableCount++;
 
-                    if (!foundTopInteractable && button.interactable)
-                    {
-                        // Mark this square as the top-most interactable
-                        foundTopInteractable = true;
-                    }
-                    else
-                    {
-                        // Save the current interactable state if not already saved
-                        if (!interactableStates.ContainsKey(square))
-                        {
-                            interactableStates[square] = button.interactable;
-                        }
-
-                        // Disable the square
-                        button.interactable = false;
-                    }
-
+                    if (square.squareImage.sprite.name != "BuildingTileEmpty") interactableCount++;
+                    continue;
                 }
+                if (!interactableStates.ContainsKey(square))
+                {
+                    interactableStates[square] = button.interactable;
+                }
+
+                // Disable the button
+                button.interactable = false;
+                Debug.Log($"Disabled button at row: {row}, col: {col}");
+
             }
         }
+    
        
     }
 

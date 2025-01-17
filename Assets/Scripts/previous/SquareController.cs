@@ -124,6 +124,10 @@ public class SquareController : MonoBehaviour, IDropHandler, IPointerClickHandle
                 {
                     MakeSquareAboveInteractable();
                 }
+                else
+                {
+                    MakeSquareAboveUninteractable();
+                }
 
                 
             }
@@ -146,6 +150,33 @@ public class SquareController : MonoBehaviour, IDropHandler, IPointerClickHandle
                         {
                             squareAbove.SetInteractable(true); // Make it interactable
                             Debug.Log($"Square above at row {aboveRow}, col {col} made interactable.");
+                        }
+                    }
+                    return; // Exit once the square is found
+                }
+            }
+        }
+
+        Debug.LogWarning("Square's position in the grid could not be found.");
+    }
+
+    private void MakeSquareAboveUninteractable()
+    {
+        // Find this square's position in the grid
+        for (int row = 0; row < HouseBuildingGridController.Instance.gridSquares.GetLength(0); row++)
+        {
+            for (int col = 0; col < HouseBuildingGridController.Instance.gridSquares.GetLength(1); col++)
+            {
+                if (HouseBuildingGridController.Instance.gridSquares[row, col] == this)
+                {
+                    int aboveRow = row - 1;
+                    if (aboveRow >= 0) // Check if there's a row above
+                    {
+                        SquareController squareAbove = HouseBuildingGridController.Instance.gridSquares[aboveRow, col];
+                        if (squareAbove != null)
+                        {
+                            squareAbove.SetInteractable(false); // Make it interactable
+                            Debug.Log($"Square above at row {aboveRow}, col {col} made uninteractable.");
                         }
                     }
                     return; // Exit once the square is found

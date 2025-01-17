@@ -75,6 +75,7 @@ public class HouseBlockController : MonoBehaviour, IBeginDragHandler, IDragHandl
         // 6) Configure the copy's CanvasGroup.
         var draggedCanvasGroup = draggedCopy.GetComponent<CanvasGroup>();
         if (draggedCanvasGroup == null)
+        if (draggedCanvasGroup == null)
             draggedCanvasGroup = draggedCopy.AddComponent<CanvasGroup>();
 
         draggedCanvasGroup.blocksRaycasts = false;
