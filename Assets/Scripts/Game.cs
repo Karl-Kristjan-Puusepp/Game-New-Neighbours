@@ -29,6 +29,8 @@ public class Game : MonoBehaviour
     public GameObject PartyVillagers;
     public GameObject HappyParty;
 
+    public TutorialController Tutorial;
+
     public static List<string> happySpriteNames = new List<string>();
     public static List<string> villageSpriteNames = new List<string>();
 
@@ -65,6 +67,10 @@ public class Game : MonoBehaviour
     }
     private void Start()
     {
+        if (currentCustomerID == 0)
+            Tutorial.ShowText("Click to meet your first customer");
+        else 
+            Tutorial.ShowText("");
         if (currentCustomerID == Customers.Count)
         {
             ButtonText.text = "See results";
@@ -80,6 +86,12 @@ public class Game : MonoBehaviour
             currentCustomerID++;
             CustomerPanelObject.SetActive(true);
             customerPanel.SetCustomerData(currentCustomer);
+            currentCustomer.id = currentCustomerID;
+
+            if (currentCustomerID == 1) // TODO: MAKE 0. ?????????????????????????????
+                Tutorial.ShowText("Choose a lot next to the woods");
+            else
+                Tutorial.ShowText("");
 
             SceneData.CurrentCustomerStatic = currentCustomer;
 

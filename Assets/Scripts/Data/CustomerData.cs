@@ -21,4 +21,6 @@ public class CustomerData : ScriptableObject
     public Sprite CustomerSprite;
     public AudioClip CustomerNoise;
     public string CustomerName;
+
+    public int id = 0;
 }
