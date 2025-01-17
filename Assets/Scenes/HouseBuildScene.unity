@@ -7419,11 +7419,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7691475978917207788, guid: 9549ab9b63bdc894b8e89f76aa02f3c9, type: 3}
       propertyPath: m_fontSize
-      value: 20
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 7691475978917207788, guid: 9549ab9b63bdc894b8e89f76aa02f3c9, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 7691475978917207788, guid: 9549ab9b63bdc894b8e89f76aa02f3c9, type: 3}
       propertyPath: m_fontSizeBase
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7691475978917207788, guid: 9549ab9b63bdc894b8e89f76aa02f3c9, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9056927427442892315, guid: 9549ab9b63bdc894b8e89f76aa02f3c9, type: 3}
       propertyPath: m_AnchoredPosition.x

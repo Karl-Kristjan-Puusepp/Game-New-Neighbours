@@ -12,9 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 902e98d70f0175141ae82fb01687d669, type: 3}
   m_Name: Cow
   m_EditorClassIdentifier: 
-  requirementText: My humble abode shall have 2 doors and 12 windows.
+  requirementText: My humble abode shall have 3 doors and 12 windows. In the center
+    of town! It shall be a marvel!
   windowsRequired: 12
-  doorsRequired: 2
+  doorsRequired: 3
+  widthRequired: -1
+  heightRequired: -1
+  wallColorRequired: 
+  roofColorRequired: 
+  locationRequired: center
+  separateHouses: 0
   CustomerSprite: {fileID: 21300000, guid: 0014feaf756ae06428422b848ad2be6c, type: 3}
   CustomerNoise: {fileID: 8300000, guid: 5f750aca33988ef4397705685cf6881f, type: 3}
   CustomerName: Cow
+  id: 9

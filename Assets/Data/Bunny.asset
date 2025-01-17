@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 902e98d70f0175141ae82fb01687d669, type: 3}
   m_Name: Bunny
   m_EditorClassIdentifier: 
-  requirementText: I want 3 doors !! Hop-hop ! I want to live in the center of the
-    town !!
+  requirementText: I want to live in a green house next to the woods.
   windowsRequired: -1
-  doorsRequired: 3
+  doorsRequired: -1
   widthRequired: -1
   heightRequired: -1
-  wallColorRequired: 
+  wallColorRequired: green
   roofColorRequired: 
-  locationRequired: 
+  locationRequired: tree
   separateHouses: 0
   CustomerSprite: {fileID: 21300000, guid: e59b9b4b7977b8d499664c77bbc4a569, type: 3}
   CustomerNoise: {fileID: 8300000, guid: 6f80a321dab2a5e49ad92ce9264034b6, type: 3}
   CustomerName: Bunny
+  id: 2

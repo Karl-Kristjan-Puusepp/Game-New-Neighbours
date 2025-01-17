@@ -12,16 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 902e98d70f0175141ae82fb01687d669, type: 3}
   m_Name: Duck
   m_EditorClassIdentifier: 
-  requirementText: No windows please, quack quack quack quack and I want to live
-    by water
-  windowsRequired: 0
-  doorsRequired: -1
+  requirementText: I am the duck. I want a green house with a black roof. By the
+    lake, of course. I want it to have 3 windows and then 3 more windows. Also a
+    door for me, one for my buddy Bird and one for Bohumil.
+  windowsRequired: 6
+  doorsRequired: 3
   widthRequired: -1
   heightRequired: -1
-  wallColorRequired: 
-  roofColorRequired: 
+  wallColorRequired: green
+  roofColorRequired: black
   locationRequired: water
   separateHouses: 0
   CustomerSprite: {fileID: 21300000, guid: 882e27bb871be1b4b91e6e4f22dcf5cf, type: 3}
   CustomerNoise: {fileID: 8300000, guid: c616bcef46e687448b5fb198d6a73072, type: 3}
   CustomerName: Duck
+  id: 13

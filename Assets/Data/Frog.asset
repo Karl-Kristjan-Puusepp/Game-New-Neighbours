@@ -12,9 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 902e98d70f0175141ae82fb01687d669, type: 3}
   m_Name: Frog
   m_EditorClassIdentifier: 
-  requirementText: I want a house with 4 windows !!!!!!!
+  requirementText: House please. Water. 4 window. 1 door for me. 1 for friend. Red.
   windowsRequired: 4
-  doorsRequired: -1
+  doorsRequired: 2
+  widthRequired: -1
+  heightRequired: -1
+  wallColorRequired: red
+  roofColorRequired: 
+  locationRequired: water
+  separateHouses: 0
   CustomerSprite: {fileID: 21300000, guid: 349c2933dcac71a4f82adf447d739b0d, type: 3}
   CustomerNoise: {fileID: 8300000, guid: 12a2258289370ba43bcd4a2f0af39db1, type: 3}
   CustomerName: Frog
+  id: 10

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 902e98d70f0175141ae82fb01687d669, type: 3}
   m_Name: Mouse
   m_EditorClassIdentifier: 
-  requirementText: Make me a yellow house with 3 windows!! I will live in cheese!!!!
+  requirementText: Make me a yellow house with 3 windows! I will live in cheese!!!!
   windowsRequired: 3
   doorsRequired: -1
   widthRequired: -1
@@ -24,3 +24,4 @@ MonoBehaviour:
   CustomerSprite: {fileID: 21300000, guid: 88b46d7bf89ad4244915c3437308a134, type: 3}
   CustomerNoise: {fileID: 8300000, guid: 3acfca81f12450e4a9dd4691336770c7, type: 3}
   CustomerName: Mouse
+  id: 6

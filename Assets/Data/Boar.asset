@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 902e98d70f0175141ae82fb01687d669, type: 3}
   m_Name: Boar
   m_EditorClassIdentifier: 
-  requirementText: 'I want a very wide and also green house. '
-  windowsRequired: -1
+  requirementText: Heyyy! Make me a pink house with 2 windows that's really wide!
+  windowsRequired: 2
   doorsRequired: -1
   widthRequired: 3
   heightRequired: -1
-  wallColorRequired: green
+  wallColorRequired: pink
   roofColorRequired: 
   locationRequired: 
   separateHouses: 0
   CustomerSprite: {fileID: 21300000, guid: 258d27098c965e74eaf6874a379812b8, type: 3}
   CustomerNoise: {fileID: 8300000, guid: 727b83b110610944794d59838f7ab952, type: 3}
   CustomerName: Boar
-  id: 5
+  id: 8

@@ -12,9 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 902e98d70f0175141ae82fb01687d669, type: 3}
   m_Name: Snail
   m_EditorClassIdentifier: 
-  requirementText: I want a house with 4 windows !!!!!!!
-  windowsRequired: 4
+  requirementText: 'Make me a black house witha black roof and no windows. No one
+    truly understands me.. '
+  windowsRequired: 0
   doorsRequired: -1
+  widthRequired: -1
+  heightRequired: -1
+  wallColorRequired: black
+  roofColorRequired: black
+  locationRequired: 
+  separateHouses: 0
   CustomerSprite: {fileID: 21300000, guid: 3c680805950b1ee4d902caaf5b58905b, type: 3}
   CustomerNoise: {fileID: 8300000, guid: 609960dea3e6fa7499952e15e6166d50, type: 3}
   CustomerName: Snail
+  id: 12

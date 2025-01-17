@@ -12,16 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 902e98d70f0175141ae82fb01687d669, type: 3}
   m_Name: Dog
   m_EditorClassIdentifier: 
-  requirementText: Make me a red house with a black roof! And make it very wide!!
-    I also want 2 doors and... 5 windows... And it must be near water!!
-  windowsRequired: 5
-  doorsRequired: 2
+  requirementText: I really really want to live next to water! And! And in a realllly
+    big house!! The biggest house ever with the most doors ever!
+  windowsRequired: -1
+  doorsRequired: 3
   widthRequired: 3
-  heightRequired: -1
-  wallColorRequired: red
-  roofColorRequired: black
+  heightRequired: 4
+  wallColorRequired: 
+  roofColorRequired: 
   locationRequired: water
   separateHouses: 0
   CustomerSprite: {fileID: 21300000, guid: e1b4fe11f20f807458a868665901dfec, type: 3}
   CustomerNoise: {fileID: 8300000, guid: 93f76b790088f9c4f961f0db8f7b2e62, type: 3}
   CustomerName: Dog
+  id: 5

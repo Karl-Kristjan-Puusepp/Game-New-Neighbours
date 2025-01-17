@@ -12,9 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 902e98d70f0175141ae82fb01687d669, type: 3}
   m_Name: Cat
   m_EditorClassIdentifier: 
-  requirementText: i want 1 door and 5 windows
-  windowsRequired: 5
-  doorsRequired: 1
+  requirementText: Meow meow! I want the tallest house possible!
+  windowsRequired: -1
+  doorsRequired: -1
+  widthRequired: -1
+  heightRequired: 4
+  wallColorRequired: 
+  roofColorRequired: 
+  locationRequired: 
+  separateHouses: 0
   CustomerSprite: {fileID: 21300000, guid: 070866ae490a8f54fa8abc7734a4a71e, type: 3}
   CustomerNoise: {fileID: 8300000, guid: bf4f6fa1311b0bb4e9bdacd49bd548aa, type: 3}
   CustomerName: Cat
+  id: 1
