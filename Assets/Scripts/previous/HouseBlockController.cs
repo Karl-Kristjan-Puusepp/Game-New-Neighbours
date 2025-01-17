@@ -114,6 +114,7 @@ public class HouseBlockController : MonoBehaviour, IBeginDragHandler, IDragHandl
 
         RectTransform draggedRectTransform = draggedCopy.GetComponent<RectTransform>();
 
+        /*
         // Convert mouse position to canvas space on each frame.
         RectTransformUtility.ScreenPointToLocalPointInRectangle(
             canvas.transform as RectTransform,
@@ -124,6 +125,8 @@ public class HouseBlockController : MonoBehaviour, IBeginDragHandler, IDragHandl
 
         // Keep the click offset so the block stays under the cursor.
         draggedRectTransform.anchoredPosition = mousePosCanvas - localClickOffset + new Vector2(440, -250);
+        */
+        draggedRectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
     }
 
     public void OnEndDrag(PointerEventData eventData)
