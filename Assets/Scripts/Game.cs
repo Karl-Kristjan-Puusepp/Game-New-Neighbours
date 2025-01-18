@@ -20,6 +20,7 @@ public class Game : MonoBehaviour
     public EndScreen endScreen;
     public TextMeshProUGUI GameEndText;
     public AudioClip GameEndMusic;
+    public AudioClip GameStartMusic;
     private CustomerPanel customerPanel;
     public TextMeshProUGUI HappinessText;
     public TextMeshProUGUI ButtonText;
@@ -33,6 +34,7 @@ public class Game : MonoBehaviour
 
     public static bool randomRequirements=false;
     public static int randomCounter = 0;
+    public static bool gameRestarted = false;
 
     public TutorialController Tutorial;
 
@@ -53,26 +55,52 @@ public class Game : MonoBehaviour
 
         HappinessText.text = $"{SceneData.happyCustomers} / {SceneData.customersTotal}";
 
+        if (gameRestarted)
+        {
+            AudioSource musicSource = GameObject.Find("music").GetComponent<AudioSource>();
+            if (musicSource != null)
+            {
+                musicSource.Stop();
+                musicSource.clip = GameStartMusic;
+                musicSource.Play();
+            }
+        }
         foreach (Transform child in AllLots.transform)
         {
             Button lotButton = child.GetComponent<Button>();
-            
+            LotController lotController = lotButton.GetComponent<LotController>();
 
-            if (lotButton != null)
+            
+            if (lotController.hasHouse && gameRestarted)
             {
-                lotButton.interactable = false;
+
+                House lotHouse = null;
+                int row = lotController.row;
+                int col = lotController.col;
+                LotHouseAssigner.SetHouse(row, col, lotHouse);
+                lotController.hasHouse = false;
+
+                    
+                lotController.SetButtonTransparency(0.7f);
+                    
+
             }
+            lotButton.interactable = false;
+               
         }
+        gameRestarted = false;
         newCustomer.onClick.AddListener(NextCustomer);
         CustomerPanelObject.SetActive(false);
         PartyVillagers.SetActive(false);
         HappyParty.SetActive(false);
         ShowVillagers();
+
+
         
     }
     private void Start()
     {
-        if (currentCustomerID == 0 && !randomRequirements) 
+        if (currentCustomerID == 0 && randomCounter == 0 && !randomRequirements) 
         {
             Tutorial.ShowText("Click to meet your first customer");
             Tutorial.ShowNool(1);
@@ -96,7 +124,7 @@ public class Game : MonoBehaviour
             newCustomer.interactable = false;
 
             if (randomRequirements)
-            {   randomCounter ++;
+            {   
                 currentCustomer = Customers[UnityEngine.Random.Range(0, Customers.Count)];
                 SceneData.CurrentCustomerStatic = currentCustomer;
                 RandomRequirements.GenerateRandomRequirements(randomCounter);
@@ -112,7 +140,7 @@ public class Game : MonoBehaviour
             customerPanel.SetCustomerData(currentCustomer);
             currentCustomer.id = currentCustomerID;
 
-            if (currentCustomerID == 0 && !randomRequirements){
+            if (currentCustomerID == 0 && randomCounter == 0 && !randomRequirements){
                 Tutorial.ShowText("Choose a lot next to the woods");
                 Tutorial.ShowNool(2);
             } 
@@ -124,7 +152,6 @@ public class Game : MonoBehaviour
 
             
 
-            int count = 0;
             foreach (Transform child in AllLots.transform)
             {
                 Button lotButton = child.GetComponent<Button>();
@@ -133,7 +160,6 @@ public class Game : MonoBehaviour
                 {
                     Debug.Log($"Setting interactable for button: {child.name} to true");
                     lotButton.interactable = true;//count < 4; // Enable only the first 4
-                    count++;
                 }
                 else if (lotController.hasHouse)
                 {
@@ -153,6 +179,8 @@ public class Game : MonoBehaviour
 
         
     }
+
+   
 
     public static void AddHappyCustomer(string customerName)
     {

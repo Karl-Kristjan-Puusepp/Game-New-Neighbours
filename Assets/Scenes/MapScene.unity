@@ -12969,23 +12969,24 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 223812807de763840b40821d00c63382, type: 2}
   - {fileID: 11400000, guid: 65f0829cf4af92546807bb601e26d6cf, type: 2}
   - {fileID: 11400000, guid: f50e8c06150c9744f9f04624f917ba81, type: 2}
+  - {fileID: 11400000, guid: 8c03e21c9e53c774e91000e9b166c9c2, type: 2}
   - {fileID: 11400000, guid: 14484df91a9eb234db2c58ca53f61066, type: 2}
   - {fileID: 11400000, guid: 0f9241d3b80e65246bc75fa9ae4277ec, type: 2}
   - {fileID: 11400000, guid: 7ec3e9c84e85a244eba1c268b68f791d, type: 2}
   - {fileID: 11400000, guid: d17edc5681aa24344a8d405156f285d4, type: 2}
-  - {fileID: 11400000, guid: 8c03e21c9e53c774e91000e9b166c9c2, type: 2}
+  - {fileID: 11400000, guid: a1ec3d398cb60a44e91ac621e2fa18e0, type: 2}
   - {fileID: 11400000, guid: d7f344fe5760e76409c4fe90a9dea027, type: 2}
   - {fileID: 11400000, guid: 3a7ca70506e47a84f9d264ed07e21760, type: 2}
-  - {fileID: 11400000, guid: a1ec3d398cb60a44e91ac621e2fa18e0, type: 2}
   - {fileID: 11400000, guid: 53abe66d96415da468d9c1ef177085ba, type: 2}
-  - {fileID: 11400000, guid: 049ba352e6aeb2c43ae8f1a0a3dadb54, type: 2}
   - {fileID: 11400000, guid: cf499c24efad73b47ab59ab241f417c3, type: 2}
+  - {fileID: 11400000, guid: 049ba352e6aeb2c43ae8f1a0a3dadb54, type: 2}
   AllLots: {fileID: 1028118163}
   CustomerPanelObject: {fileID: 1003134812}
   EndMenuPanel: {fileID: 0}
   endScreen: {fileID: 582834073}
   GameEndText: {fileID: 1486296608}
   GameEndMusic: {fileID: 8300000, guid: 18ea93fe72c1bef4788b0d0ec290c908, type: 3}
+  GameStartMusic: {fileID: 8300000, guid: c3d2aa576fbb55c43b1047d473dc20a7, type: 3}
   HappinessText: {fileID: 1360404777}
   ButtonText: {fileID: 712030475}
   HappyCustomers: []

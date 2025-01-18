@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Tracing;
@@ -56,7 +57,28 @@ public class MiniGridController : MonoBehaviour
     public void DisplayHouse(House house)
     {
         Awake();
-        if (house == null) return;
+        if (house == null)
+        {
+            int index = 0;
+            foreach (Transform child in transform)
+            {
+
+                int row = index / 3;
+                int col = index % 3;
+
+                Image cellImage = child.GetComponent<Image>();
+                if (cellImage != null)
+                {
+                    gridCells[row, col] = cellImage;
+                    //Debug.Log($"Initialised r:{row}, c:{col} in minigrid");
+                    // Set default sprite and color
+                    cellImage.sprite = defaultSprite;
+                    cellImage.color = defaultColor;
+                }
+                index++;
+            }
+            return;
+        };
         bool hasNonDefaultTiles = false;
         // Load the house data into the grid
         for (int row = 0; row < 4; row++)

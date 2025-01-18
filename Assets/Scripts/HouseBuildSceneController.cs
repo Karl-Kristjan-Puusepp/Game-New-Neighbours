@@ -15,7 +15,7 @@ public class HouseBuildSceneController : MonoBehaviour
     void Update()
     {
         if (SceneData.CurrentCustomerStatic == null) return;
-        if (SceneData.CurrentCustomerStatic.id == 0 && !Game.randomRequirements)
+        if (SceneData.CurrentCustomerStatic.id == 0  && !Game.randomRequirements)
         {
             Tutorial.ShowText("Drag and drop tiles to build a house. Click on the available colors to change tile color.");
             Tutorial.ShowNool(0);
