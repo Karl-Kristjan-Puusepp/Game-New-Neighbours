@@ -13063,7 +13063,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   newCustomer: {fileID: 1004203195}
   Customers:
-  - {fileID: 11400000, guid: 0f9241d3b80e65246bc75fa9ae4277ec, type: 2}
   - {fileID: 11400000, guid: 223812807de763840b40821d00c63382, type: 2}
   - {fileID: 11400000, guid: 65f0829cf4af92546807bb601e26d6cf, type: 2}
   - {fileID: 11400000, guid: f50e8c06150c9744f9f04624f917ba81, type: 2}
@@ -13083,6 +13082,7 @@ MonoBehaviour:
   EndMenuPanel: {fileID: 0}
   endScreen: {fileID: 582834073}
   GameEndText: {fileID: 1486296608}
+  GameEndMusic: {fileID: 8300000, guid: 18ea93fe72c1bef4788b0d0ec290c908, type: 3}
   HappinessText: {fileID: 1360404777}
   ButtonText: {fileID: 712030475}
   HappyCustomers: []

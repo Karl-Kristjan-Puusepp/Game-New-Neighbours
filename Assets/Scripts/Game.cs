@@ -19,6 +19,7 @@ public class Game : MonoBehaviour
     public GameObject EndMenuPanel;
     public EndScreen endScreen;
     public TextMeshProUGUI GameEndText;
+    public AudioClip GameEndMusic;
     private CustomerPanel customerPanel;
     public TextMeshProUGUI HappinessText;
     public TextMeshProUGUI ButtonText;
@@ -213,6 +214,13 @@ public class Game : MonoBehaviour
 
     private async void EndGame()
     {
+        AudioSource musicSource = GameObject.Find("music").GetComponent<AudioSource>();
+        if (musicSource != null)
+        {
+            musicSource.Stop();
+            musicSource.clip = GameEndMusic;
+            musicSource.Play();
+        } 
         double happinessPercentage = Math.Round((SceneData.happyCustomers * 100) / SceneData.customersTotal, 2);
 
         string gameEndString = "";

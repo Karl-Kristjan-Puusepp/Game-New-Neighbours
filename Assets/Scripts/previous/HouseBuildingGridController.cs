@@ -238,10 +238,10 @@ public class HouseBuildingGridController : MonoBehaviour
             if (gridSquares[3, 1].squareImage.sprite.name == "BuildingTileEmpty" && gridSquares[3, 0].squareImage.sprite.name != "BuildingTileEmpty" && gridSquares[3, 2].squareImage.sprite.name != "BuildingTileEmpty") requirementsSatisfied++;
             requirementsTotal++;
         }
-        if (customerData.CustomerName == "Bohumil") requirementsSatisfied = 1;
-        if (requirementsTotal == 0) requirementsTotal = 1;
 
-        double requirementspercentage = requirementsSatisfied / requirementsTotal;
+        double requirementspercentage;
+        if (requirementsTotal == 0) requirementspercentage = 1.0;
+        else requirementspercentage = requirementsSatisfied / requirementsTotal;
 
         if (requirementspercentage == 1.0)
         {
