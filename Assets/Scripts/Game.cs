@@ -72,7 +72,7 @@ public class Game : MonoBehaviour
     }
     private void Start()
     {
-        if (currentCustomerID == 0) 
+        if (currentCustomerID == 0 && !randomRequirements) 
         {
             Tutorial.ShowText("Click to meet your first customer");
             Tutorial.ShowNool(1);
@@ -83,7 +83,7 @@ public class Game : MonoBehaviour
             Tutorial.ShowNool(0);
         } 
         
-        if (currentCustomerID == Customers.Count)
+        if ( randomCounter + currentCustomerID == Customers.Count)
         {
             ButtonText.text = "See results";
         }
@@ -92,11 +92,11 @@ public class Game : MonoBehaviour
     private void NextCustomer()
     {
         
-        if (currentCustomerID < Customers.Count && randomCounter < Customers.Count) {
+        if (randomCounter + currentCustomerID < Customers.Count) {
             newCustomer.interactable = false;
 
             if (randomRequirements)
-            {   randomCounter = 0;
+            {   randomCounter ++;
                 currentCustomer = Customers[UnityEngine.Random.Range(0, Customers.Count)];
                 SceneData.CurrentCustomerStatic = currentCustomer;
                 RandomRequirements.GenerateRandomRequirements(randomCounter);
