@@ -22,7 +22,7 @@ MonoBehaviour:
   roofColorRequired: 
   locationRequired: tree
   separateHouses: 0
-  CustomerSprite: {fileID: 21300000, guid: f6001aec6dca9cd4fb82d95d1fa433de, type: 3}
+  CustomerSprite: {fileID: 21300000, guid: 14a1fbdc0e41e924088e2c1b0e5a5224, type: 3}
   CustomerNoise: {fileID: 8300000, guid: afe490dcdfafdda47ba9fdcbe0ce8073, type: 3}
   CustomerName: Bear
   id: 11
