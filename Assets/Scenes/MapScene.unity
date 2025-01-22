@@ -12982,7 +12982,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 049ba352e6aeb2c43ae8f1a0a3dadb54, type: 2}
   AllLots: {fileID: 1028118163}
   CustomerPanelObject: {fileID: 1003134812}
-  EndMenuPanel: {fileID: 0}
   endScreen: {fileID: 582834073}
   GameEndText: {fileID: 1486296608}
   GameEndMusic: {fileID: 8300000, guid: 18ea93fe72c1bef4788b0d0ec290c908, type: 3}

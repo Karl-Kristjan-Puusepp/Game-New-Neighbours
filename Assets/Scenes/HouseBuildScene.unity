@@ -7425,6 +7425,10 @@ PrefabInstance:
       propertyPath: customerData
       value: 
       objectReference: {fileID: 11400000, guid: 12231d2ee1956d5498bfd94e4ac90e66, type: 2}
+    - target: {fileID: 6134164839043668622, guid: 9549ab9b63bdc894b8e89f76aa02f3c9, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7691475978917207788, guid: 9549ab9b63bdc894b8e89f76aa02f3c9, type: 3}
       propertyPath: m_text
       value: text text
