@@ -21,7 +21,7 @@ MonoBehaviour:
   roofColorRequired: 
   locationRequired: water
   separateHouses: 0
-  CustomerSprite: {fileID: 21300000, guid: 7f6340e63c05f1e43bb2c6f2343958f9, type: 3}
+  CustomerSprite: {fileID: 21300000, guid: 349c2933dcac71a4f82adf447d739b0d, type: 3}
   CustomerNoise: {fileID: 8300000, guid: 12a2258289370ba43bcd4a2f0af39db1, type: 3}
   CustomerName: Frog
   id: 10
