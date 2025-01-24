@@ -57,11 +57,11 @@ public class RandomRequirements : MonoBehaviour
                     windowsRequired = Random.Range(0, 9); // Random integer between 1 and 12
                     if (windowsRequired == 1)
                     {
-                        separateTexts = new string[] { $"{windowsRequired} window please. ", $"I want my house to have exactly {windowsRequired} window. ", $"Perchance.. could I get {windowsRequired} window. ", $"{windowsRequired} window. ", "2 windows! ..erm.. actually, only one window" };
+                        separateTexts = new string[] { $"{windowsRequired} window please. ", $"I want my house to have exactly {windowsRequired} window. ", $"Perchance.. could I get {windowsRequired} window. ", $"{windowsRequired} window. ", "2 windows! ..erm.. actually, only one window! " };
                     }
                     else
                     {
-                        separateTexts = new string[] { $"{windowsRequired} windows please. ", $"I want my house to have exactly {windowsRequired} windows. ", $"Perchance.. could I get {windowsRequired} windows. ", $"{windowsRequired} windows. ", $"windows: {windowsRequired}. ", $"1 window for my room, {windowsRequired-1} more for other rooms"  };
+                        separateTexts = new string[] { $"{windowsRequired} windows please. ", $"I want my house to have exactly {windowsRequired} windows. ", $"Perchance.. could I get {windowsRequired} windows. ", $"{windowsRequired} windows. ", $"windows: {windowsRequired}. ", $"1 window for my room, {windowsRequired-1} more for other rooms. "  };
                     }
                     RequirementText += separateTexts[Random.Range(0, separateTexts.Length)];
 
@@ -72,21 +72,21 @@ public class RandomRequirements : MonoBehaviour
                     else doorsRequired = Random.Range(1, 3); // Random integer between 1 and 2
 
                     if (doorsRequired == 1)  separateTexts = new string[] { $"Only {doorsRequired} door please. ", $"I want my house to have exactly {doorsRequired} door. ", $"Perchance.. could I get {doorsRequired} door. ", $"{doorsRequired} door. " };
-                    else separateTexts = new string[] { $"{doorsRequired} doors please. ", $"I want my house to have exactly {doorsRequired} doors. ", $"Perchance.. could I get {doorsRequired} doors. ", $"{doorsRequired} doors. ", $"doors: {doorsRequired}. ", "1 door for me, 1 for my wife. ", "1 door for me and 1 more for all my friends. ", "1 door to go in the house, another door to come out the house" };
+                    else separateTexts = new string[] { $"{doorsRequired} doors please. ", $"I want my house to have exactly {doorsRequired} doors. ", $"Perchance.. could I get {doorsRequired} doors. ", $"{doorsRequired} doors. ", $"doors: {doorsRequired}. ", "1 door for me, 1 for my wife. ", "1 door for me and 1 more for all my friends. ", "1 door to go in the house, another door to come out the house. " };
                     RequirementText += separateTexts[Random.Range(0, separateTexts.Length)];
                     break;
 
                 case "Width":
                     widthRequired = Random.Range(2, 4); // Random integer between 1 and 3
                     
-                    if (widthRequired == 2)  separateTexts = new string[] { $"I don't want too wide of a house... but I don't want it to be too skinny either.. ", $"I want my house to be two blocks wide. " };
-                    else if (widthRequired == 3) separateTexts = new string[] { $"I want the widest house possible ", $"I want my house to be very wide. " }; 
+                    if (widthRequired == 2)  separateTexts = new string[] { $"I don't want too wide of a house... but I don't want it to be too skinny either.. ", $"I want my house to be two blocks wide. ", $"The width of my house should be exactly two blocks. ", $"Width: 2 blocks. " };
+                    else if (widthRequired == 3) separateTexts = new string[] { $"I want the widest house possible. ", $"I want my house to be very wide. " , $"I want my house to be three blocks wide. ", $"The width of my house should be exactly three blocks. ", $"Width: 3 blocks. " }; 
                     RequirementText += separateTexts[Random.Range(0, separateTexts.Length)];
                     break;
 
                 case "Height":
                     heightRequired = 4; // Random integer between 1 and 4
-                    separateTexts = new string[] { $"I want the tallest house possible. ", $"I want my house to be very tall. ", $"I want my house to be as tall as it possibly can. ", $"My humble abode should have as many floors as possible. " };
+                    separateTexts = new string[] { $"I want the tallest house possible. ", $"I want my house to be very tall. ", $"I want my house to be as tall as it possibly can. ", $"My humble abode should have as many floors as possible. ", "Height: 4 blocks. ", "The height of my house should be four blocks. ", "My house should be as tall as possible. " };
                     RequirementText += separateTexts[Random.Range(0, separateTexts.Length)];
                     break;
 
@@ -98,7 +98,7 @@ public class RandomRequirements : MonoBehaviour
 
                 case "RoofColor":
                     roofColorRequired = roofColors[Random.Range(0, roofColors.Length)];
-                    separateTexts = new string[] { $"I want the roof of my home to have a little bit of {roofColorRequired}. ", $"My favourite color is {roofColorRequired}, can my roof have {roofColorRequired} on it?. ", $"My father used to say... a house without a {roofColorRequired} roof is no good!. ", $"{roofColorRequired} roof.", $"{roofColorRequired} roof.", $"roof: {roofColorRequired}.", $"roof: {roofColorRequired}." };
+                    separateTexts = new string[] { $"I want the roof of my home to have a little bit of {roofColorRequired}. ", $"My favourite color is {roofColorRequired}, can my roof have {roofColorRequired} on it?. ", $"My father used to say... a house without a {roofColorRequired} roof is no good!. ", $"{roofColorRequired} roof. ", $"{roofColorRequired} roof. ", $"roof: {roofColorRequired}. ", $"roof: {roofColorRequired}. " };
                     RequirementText += separateTexts[Random.Range(0, separateTexts.Length)];
                     break;
 
@@ -114,14 +114,15 @@ public class RandomRequirements : MonoBehaviour
 
                     if (chosenRequirements.Contains("Width")) break;
 
-                    doorsRequired = 2;
-                    separateTexts = new string[] { $"{doorsRequired} doors please. ", $"I want my house to have exactly {doorsRequired} doors. ", $"Perchance.. could I get {doorsRequired} doors. ", $"{doorsRequired} doors. " };
-                    RequirementText += separateTexts[Random.Range(0, separateTexts.Length)];
+                    
 
                     separateHouses = true; // Random boolean
                     separateTexts = new string[] { "I want two houses on the same lot! ", "My family would prefer two separate houses ", "I cannot stand my wife, build us separate houses! ", "I love my wife so much, I want to give her two houses instead of one! " };
                     RequirementText += separateTexts[Random.Range(0, separateTexts.Length)];
-
+                    
+                    doorsRequired = 2;
+                    separateTexts = new string[] { $"{doorsRequired} doors please. ", $"I want my house to have exactly {doorsRequired} doors. ", $"Perchance.. could I get {doorsRequired} doors. ", $"{doorsRequired} doors. ", "Both houses have to have a door of course. ", "A door for each house! ", "1 door on one house, 1 door on the other house. " };
+                    RequirementText += separateTexts[Random.Range(0, separateTexts.Length)];
                     break;
             }
         }

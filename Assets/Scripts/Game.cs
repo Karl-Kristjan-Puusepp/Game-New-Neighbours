@@ -16,7 +16,6 @@ public class Game : MonoBehaviour
     public List<CustomerData> Customers;
     public GameObject AllLots;
     public GameObject CustomerPanelObject;
-    public GameObject EndMenuPanel;
     public EndScreen endScreen;
     public TextMeshProUGUI GameEndText;
     public AudioClip GameEndMusic;
@@ -65,30 +64,6 @@ public class Game : MonoBehaviour
                 musicSource.Play();
             }
         }
-        foreach (Transform child in AllLots.transform)
-        {
-            Button lotButton = child.GetComponent<Button>();
-            LotController lotController = lotButton.GetComponent<LotController>();
-
-            
-            if (lotController.hasHouse && gameRestarted)
-            {
-
-                House lotHouse = null;
-                int row = lotController.row;
-                int col = lotController.col;
-                LotHouseAssigner.SetHouse(row, col, lotHouse);
-                lotController.hasHouse = false;
-
-                    
-                lotController.SetButtonTransparency(0.7f);
-                    
-
-            }
-            lotButton.interactable = false;
-               
-        }
-        gameRestarted = false;
         newCustomer.onClick.AddListener(NextCustomer);
         CustomerPanelObject.SetActive(false);
         PartyVillagers.SetActive(false);
@@ -115,6 +90,35 @@ public class Game : MonoBehaviour
         {
             ButtonText.text = "See results";
         }
+
+
+        foreach (Transform child in AllLots.transform)
+        {
+            Button lotButton = child.GetComponent<Button>();
+            LotController lotController = lotButton.GetComponent<LotController>();
+            MiniGridController miniGridController = lotButton.GetComponentInChildren<MiniGridController>();
+
+            if (lotController != null && miniGridController != null)
+            {
+                if (lotController.hasHouse && gameRestarted)
+                {
+
+                    House lotHouse = null;
+                    int row = lotController.row;
+                    int col = lotController.col;
+                    LotHouseAssigner.SetHouse(row, col, lotHouse);
+
+                    miniGridController.DisplayHouse(lotHouse);
+
+                    lotController.hasHouse = false;
+                    lotController.SetButtonTransparency(0.7f);
+
+                }
+                lotButton.interactable = false;
+            }
+
+        }
+        gameRestarted = false;
     }
 
     private void NextCustomer()
@@ -240,7 +244,7 @@ public class Game : MonoBehaviour
     }
 
 
-    private async void EndGame()
+    private void EndGame()
     {
         AudioSource musicSource = GameObject.Find("music").GetComponent<AudioSource>();
         if (musicSource != null)
@@ -272,7 +276,7 @@ public class Game : MonoBehaviour
         if (happinessPercentage >= 50)  HappyParty.SetActive(true);
         else Confetti.SetActive(false);
         
-        await(Task.Delay(300)); //MenuPanel doesn't open without this wait
+        //await(Task.Delay(300)); //MenuPanel doesn't open without this wait
 
         //SmallMenuPanel.SetActive(true);
         endScreen.TogglePanel();

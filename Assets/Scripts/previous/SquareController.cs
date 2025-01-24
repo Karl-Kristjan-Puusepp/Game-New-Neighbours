@@ -7,6 +7,8 @@ public class SquareController : MonoBehaviour, IDropHandler, IPointerClickHandle
     public event Action OnTileChanged;
     public Image squareImage;
     public Button squareButton;
+
+    public AudioClipGroup PopSounds;
     private const string FILLED_TAG = "FilledTile";  // Define the tag as a constant
     //private bool IsDoor;
 
@@ -60,7 +62,8 @@ public class SquareController : MonoBehaviour, IDropHandler, IPointerClickHandle
 
         if (droppedObject != null)
         {
-            
+            PopSounds.Play();
+
             Image draggedImage = droppedObject.GetComponent<Image>();
             Debug.Log($"Dragged image component: {draggedImage != null}");
             
