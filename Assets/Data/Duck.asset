@@ -23,7 +23,7 @@ MonoBehaviour:
   roofColorRequired: black
   locationRequired: water
   separateHouses: 0
-  CustomerSprite: {fileID: 21300000, guid: 882e27bb871be1b4b91e6e4f22dcf5cf, type: 3}
+  CustomerSprite: {fileID: 21300000, guid: 5d4a232f9a9f8474a8afc65853add8be, type: 3}
   CustomerNoise: {fileID: 8300000, guid: c616bcef46e687448b5fb198d6a73072, type: 3}
   CustomerName: Duck
   id: 13

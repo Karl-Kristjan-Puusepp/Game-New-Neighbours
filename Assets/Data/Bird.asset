@@ -22,7 +22,7 @@ MonoBehaviour:
   roofColorRequired: 
   locationRequired: 
   separateHouses: 0
-  CustomerSprite: {fileID: 21300000, guid: ec2c4bc73d447144e91cfe5a8429bb45, type: 3}
+  CustomerSprite: {fileID: 21300000, guid: de3dc924a111b6b4ebee8a4d1daf25a4, type: 3}
   CustomerNoise: {fileID: 8300000, guid: 4de2f3c09f77b8a42ba88e1832f329dc, type: 3}
   CustomerName: Falcon
   id: 3

@@ -22,7 +22,7 @@ MonoBehaviour:
   roofColorRequired: black
   locationRequired: 
   separateHouses: 0
-  CustomerSprite: {fileID: 21300000, guid: 3c680805950b1ee4d902caaf5b58905b, type: 3}
+  CustomerSprite: {fileID: 21300000, guid: 9a5a518d5c3dd304faa83a80e18c9e56, type: 3}
   CustomerNoise: {fileID: 8300000, guid: 609960dea3e6fa7499952e15e6166d50, type: 3}
   CustomerName: Snail
   id: 12

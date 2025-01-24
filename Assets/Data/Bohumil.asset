@@ -21,7 +21,7 @@ MonoBehaviour:
   roofColorRequired: 
   locationRequired: 
   separateHouses: 0
-  CustomerSprite: {fileID: 21300000, guid: b5d219344b85e7e469eb9867b0a3ca60, type: 3}
+  CustomerSprite: {fileID: 21300000, guid: e8a3a1278e5ae544aab7983772c72670, type: 3}
   CustomerNoise: {fileID: 8300000, guid: be32f3c79d8abdd449fd1f4ec3044e41, type: 3}
   CustomerName: Bohumil
   id: 4

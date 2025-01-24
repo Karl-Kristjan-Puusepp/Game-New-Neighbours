@@ -22,7 +22,7 @@ MonoBehaviour:
   roofColorRequired: 
   locationRequired: 
   separateHouses: 1
-  CustomerSprite: {fileID: 21300000, guid: 0a347be6abb09a9428d91f94090b98e9, type: 3}
+  CustomerSprite: {fileID: 21300000, guid: 29988eab4bfe22f4786b5d2f241b20f9, type: 3}
   CustomerNoise: {fileID: 8300000, guid: 9d7d585229a31fd4ea8c01e8b6f0c0d6, type: 3}
   CustomerName: Cat family
   id: 7

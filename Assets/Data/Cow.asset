@@ -22,7 +22,7 @@ MonoBehaviour:
   roofColorRequired: 
   locationRequired: center
   separateHouses: 0
-  CustomerSprite: {fileID: 21300000, guid: 0014feaf756ae06428422b848ad2be6c, type: 3}
+  CustomerSprite: {fileID: 21300000, guid: fb0902ebf71af0a40a3ac5f9c4563269, type: 3}
   CustomerNoise: {fileID: 8300000, guid: 5f750aca33988ef4397705685cf6881f, type: 3}
   CustomerName: Cow
   id: 9
